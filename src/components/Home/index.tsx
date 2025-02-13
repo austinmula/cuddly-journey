@@ -7,12 +7,15 @@ import BestSeller from "./BestSeller";
 import CounDown from "./Countdown";
 import Testimonials from "./Testimonials";
 import Newsletter from "../Common/Newsletter";
+import { getCategories } from "@/lib/api";
+import { Category } from "@/models/category";
 
-const Home = () => {
+const Home = async () => {
+  const categories: Category[] = await getCategories();
   return (
     <main>
       <Hero />
-      <Categories />
+      <Categories categories={categories} />
       <NewArrival />
       <PromoBanner />
       <BestSeller />
