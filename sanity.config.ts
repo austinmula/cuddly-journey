@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Ecommerce-cms',
 
-  projectId: 'tzb41v08',
-  dataset: 'production',
+  projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET,
 
   basePath: "/studio",
 
