@@ -2,6 +2,7 @@
 
 import { Category } from "@/models/category";
 import sanityClient from "./sanity";
+import { Product } from "@/models/product";
 // import { Game, GameSubset } from '@/models/game';
 
 export const getCategories = async (): Promise<Category[]> => {
@@ -14,6 +15,36 @@ export const getCategories = async (): Promise<Category[]> => {
 
   const categories: Category[] = await sanityClient.fetch(query);
   return categories;
+};
+
+export const getProducts = async (): Promise<Product[]> => {
+  const query = `*[_type == "product"] {
+    _id,
+    title,
+    slug,
+    brand,
+    price,
+    stock,
+    category->{
+      _id,
+      title,
+      slug
+    },
+    images,
+    description,
+    specifications,
+    variants,
+    reviews,
+    relatedProducts[]->{
+      _id,
+      title,
+      slug
+    },
+    createdAt
+  }`;
+
+  const products: Product[] = await sanityClient.fetch(query);
+  return products;
 };
 
 // export const getGames = async (): Promise<Game[]> => {
