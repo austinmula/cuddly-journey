@@ -129,18 +129,18 @@ const ShopDetails = () => {
                         </svg>
                       </button>
 
-                      <Image
+                      {/* <Image
                         src={product.imgs?.previews[previewImg]}
                         alt="products-details"
                         width={400}
                         height={400}
-                      />
+                      /> */}
                     </div>
                   </div>
 
                   {/* ?  &apos;border-blue &apos; :  &apos;border-transparent&apos; */}
                   <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                    {product.imgs?.thumbnails.map((item, key) => (
+                    {/* {product.imgs?.thumbnails.map((item, key) => (
                       <button
                         onClick={() => setPreviewImg(key)}
                         key={key}
@@ -157,7 +157,7 @@ const ShopDetails = () => {
                           alt="thumbnail"
                         />
                       </button>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
 
@@ -317,12 +317,12 @@ const ShopDetails = () => {
 
                   <h3 className="font-medium text-custom-1 mb-4.5">
                     <span className="text-sm sm:text-base text-dark">
-                      Price: ${product.price}
+                      Price: Kshs. {product.price}
                     </span>
-                    <span className="line-through">
+                    {/* <span className="line-through">
                       {" "}
                       ${product.discountedPrice}{" "}
-                    </span>
+                    </span> */}
                   </h3>
 
                   <ul className="flex flex-col gap-2">
@@ -1444,9 +1444,9 @@ const ShopDetails = () => {
             </div>
           </section>
 
-          <RecentlyViewdItems />
+          {/* <RecentlyViewdItems /> */}
 
-          <Newsletter />
+          {/* <Newsletter /> */}
         </>
       )}
     </>

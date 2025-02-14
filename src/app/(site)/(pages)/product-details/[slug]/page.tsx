@@ -8,7 +8,13 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-const ShopDetailsPage = () => {
+const ShopDetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  console.log(slug);
   return (
     <main>
       <ShopDetails />
