@@ -6,8 +6,9 @@ import Newsletter from "../Common/Newsletter";
 import RecentlyViewdItems from "./RecentlyViewd";
 import { usePreviewSlider } from "@/app/context/PreviewSliderContext";
 import { useAppSelector } from "@/redux/store";
+import { Product } from "@/models/product";
 
-const ShopDetails = () => {
+const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [activeColor, setActiveColor] = useState("blue");
   const { openPreviewModal } = usePreviewSlider();
   const [previewImg, setPreviewImg] = useState(0);
@@ -83,7 +84,7 @@ const ShopDetails = () => {
   const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
 
   useEffect(() => {
-    localStorage.setItem("productDetails", JSON.stringify(product));
+    localStorage.setItem("productDetails", JSON.stringify(productDetails));
   }, [product]);
 
   // pass the product here when you get the real data.
