@@ -161,7 +161,10 @@ const Header = () => {
 
             <div className="flex w-full lg:w-auto justify-between items-center gap-5">
               <div className="flex items-center gap-5">
-                <Link href="/signin" className="flex items-center gap-2.5 invisible">
+                <Link
+                  href="/signin"
+                  className="flex items-center gap-2.5 invisible"
+                >
                   <svg
                     width="24"
                     height="24"
@@ -239,7 +242,7 @@ const Header = () => {
                       cart
                     </span>
                     <p className="font-medium text-custom-sm text-dark">
-                      ${totalPrice}
+                      Kshs. {totalPrice}
                     </p>
                   </div>
                 </button>
