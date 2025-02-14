@@ -26,7 +26,7 @@ const HeroCarousal = () => {
       <SwiperSlide>
         <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
           <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
-            <div className="flex invisible items-center gap-4 mb-7.5 sm:mb-10">
+            <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
                 30%
               </span>
@@ -68,7 +68,7 @@ const HeroCarousal = () => {
       <SwiperSlide>
         <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
           <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
-            <div className="flex invisible items-center gap-4 mb-7.5 sm:mb-10">
+            <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
                 30%
               </span>
@@ -109,7 +109,7 @@ const HeroCarousal = () => {
       <SwiperSlide>
         <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
           <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
-            <div className="flex invisible items-center gap-4 mb-7.5 sm:mb-10">
+            <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
                 30%
               </span>
