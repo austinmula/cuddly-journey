@@ -36,8 +36,9 @@ type CartItem = {
     };
   };
   images: Image[];
+  summary: any[];
   description: any[]; // Sanity rich text format (Portable Text)
-  specifications: Specifications;
+  // specifications: Specifications;
   variants: Variant[];
   reviews: Review[];
   relatedProducts: RelatedProduct[];
@@ -110,7 +111,7 @@ export const cart = createSlice({
           category: action.payload.category,
           images,
           description: action.payload.description,
-          specifications: action.payload.specifications,
+          summary: action.payload.summary,
           variants: action.payload.variants,
           reviews: action.payload.reviews,
           relatedProducts: action.payload.relatedProducts,

@@ -20,8 +20,9 @@ type Product = {
     };
   };
   images: Image[];
+  summary: any[]; 
   description: any[]; // Sanity rich text format (Portable Text)
-  specifications: Specifications;
+  // specifications: Specifications;
   variants: Variant[];
   reviews: Review[];
   relatedProducts: RelatedProduct[];
@@ -82,8 +83,8 @@ const initialState = {
     quantity: 0,
     category: { _id: "", title: "", slug: { current: "" } },
     images: [],
+    summary: [],
     description: [],
-    specifications: {},
     variants: [],
     reviews: [],
     relatedProducts: [],
