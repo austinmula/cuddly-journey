@@ -35,16 +35,16 @@ const CategoryItem = ({ category }) => {
           </svg>
         </div>
 
-        <span>{category.name}</span>
+        <span>{category.title}</span>
       </div>
 
-      <span
+      {/* <span
         className={`${
           selected ? "text-white bg-blue" : "bg-gray-2"
         } inline-flex rounded-[30px] text-custom-xs px-2 ease-out duration-200 group-hover:text-white group-hover:bg-blue`}
       >
         {category.products}
-      </span>
+      </span> */}
     </button>
   );
 };

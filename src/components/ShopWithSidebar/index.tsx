@@ -11,7 +11,7 @@ import shopData from "../Shop/shopData";
 import SingleGridItem from "../Shop/SingleGridItem";
 import SingleListItem from "../Shop/SingleListItem";
 
-const ShopWithSidebar = () => {
+const ShopWithSidebar = ({products, categories}) => {
   const [productStyle, setProductStyle] = useState("grid");
   const [productSidebar, setProductSidebar] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
@@ -30,38 +30,38 @@ const ShopWithSidebar = () => {
     { label: "Old Products", value: "2" },
   ];
 
-  const categories = [
-    {
-      name: "Desktop",
-      products: 10,
-      isRefined: true,
-    },
-    {
-      name: "Laptop",
-      products: 12,
-      isRefined: false,
-    },
-    {
-      name: "Monitor",
-      products: 30,
-      isRefined: false,
-    },
-    {
-      name: "UPS",
-      products: 23,
-      isRefined: false,
-    },
-    {
-      name: "Phone",
-      products: 10,
-      isRefined: false,
-    },
-    {
-      name: "Watch",
-      products: 13,
-      isRefined: false,
-    },
-  ];
+  // const categories = [
+  //   {
+  //     name: "Desktop",
+  //     products: 10,
+  //     isRefined: true,
+  //   },
+  //   {
+  //     name: "Laptop",
+  //     products: 12,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Monitor",
+  //     products: 30,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "UPS",
+  //     products: 23,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Phone",
+  //     products: 10,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Watch",
+  //     products: 13,
+  //     isRefined: false,
+  //   },
+  // ];
 
   const genders = [
     {
@@ -160,13 +160,13 @@ const ShopWithSidebar = () => {
                   <CategoryDropdown categories={categories} />
 
                   {/* <!-- gender box --> */}
-                  <GenderDropdown genders={genders} />
+                  {/* <GenderDropdown genders={genders} /> */}
 
                   {/* // <!-- size box --> */}
-                  <SizeDropdown />
+                  {/* <SizeDropdown /> */}
 
                   {/* // <!-- color box --> */}
-                  <ColorsDropdwon />
+                  {/* <ColorsDropdwon /> */}
 
                   {/* // <!-- price range box --> */}
                   <PriceDropdown />
@@ -278,7 +278,7 @@ const ShopWithSidebar = () => {
                     : "flex flex-col gap-7.5"
                 }`}
               >
-                {shopData.map((item, key) =>
+                {products.map((item, key) =>
                   productStyle === "grid" ? (
                     <SingleGridItem item={item} key={key} />
                   ) : (
