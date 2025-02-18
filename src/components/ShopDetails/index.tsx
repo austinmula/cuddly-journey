@@ -6,8 +6,11 @@ import Newsletter from "../Common/Newsletter";
 import RecentlyViewdItems from "./RecentlyViewd";
 import { usePreviewSlider } from "@/app/context/PreviewSliderContext";
 import { useAppSelector } from "@/redux/store";
+import { Product } from "@/models/product";
+import { PortableText } from "@portabletext/react";
+import { urlFor } from "@/lib/urlFor";
 
-const ShopDetails = () => {
+const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [activeColor, setActiveColor] = useState("blue");
   const { openPreviewModal } = usePreviewSlider();
   const [previewImg, setPreviewImg] = useState(0);
@@ -63,14 +66,14 @@ const ShopDetails = () => {
       id: "tabOne",
       title: "Description",
     },
-    {
-      id: "tabTwo",
-      title: "Additional Information",
-    },
-    {
-      id: "tabThree",
-      title: "Reviews",
-    },
+    // {
+    //   id: "tabTwo",
+    //   title: "Additional Information",
+    // },
+    // {
+    //   id: "tabThree",
+    //   title: "Reviews",
+    // },
   ];
 
   const colors = ["red", "blue", "orange", "pink", "purple"];
@@ -83,7 +86,7 @@ const ShopDetails = () => {
   const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
 
   useEffect(() => {
-    localStorage.setItem("productDetails", JSON.stringify(product));
+    localStorage.setItem("productDetails", JSON.stringify(productDetails));
   }, [product]);
 
   // pass the product here when you get the real data.
@@ -91,11 +94,9 @@ const ShopDetails = () => {
     openPreviewModal();
   };
 
-  console.log(product);
-
   return (
     <>
-      <Breadcrumb title={"Shop Details"} pages={["shop details"]} />
+      <Breadcrumb title={"Product Details"} pages={["product details"]} />
 
       {product.title === "" ? (
         "Please add product"
@@ -107,7 +108,7 @@ const ShopDetails = () => {
                 <div className="lg:max-w-[570px] w-full">
                   <div className="lg:min-h-[512px] rounded-lg shadow-1 bg-gray-2 p-4 sm:p-7.5 relative flex items-center justify-center">
                     <div>
-                      <button
+                      {/* <button
                         onClick={handlePreviewSlider}
                         aria-label="button for zoom"
                         className="gallery__Image w-11 h-11 rounded-[5px] bg-gray-1 shadow-1 flex items-center justify-center ease-out duration-200 text-dark hover:text-blue absolute top-4 lg:top-6 right-4 lg:right-6 z-50"
@@ -127,10 +128,10 @@ const ShopDetails = () => {
                             fill=""
                           />
                         </svg>
-                      </button>
+                      </button> */}
 
                       <Image
-                        src={product.imgs?.previews[previewImg]}
+                        src={urlFor(product.images[previewImg]).toString()}
                         alt="products-details"
                         width={400}
                         height={400}
@@ -140,7 +141,7 @@ const ShopDetails = () => {
 
                   {/* ?  &apos;border-blue &apos; :  &apos;border-transparent&apos; */}
                   <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                    {product.imgs?.thumbnails.map((item, key) => (
+                    {product.images.map((item, key) => (
                       <button
                         onClick={() => setPreviewImg(key)}
                         key={key}
@@ -153,7 +154,7 @@ const ShopDetails = () => {
                         <Image
                           width={50}
                           height={50}
-                          src={item}
+                          src={urlFor(item).toString()}
                           alt="thumbnail"
                         />
                       </button>
@@ -167,163 +168,20 @@ const ShopDetails = () => {
                     <h2 className="font-semibold text-xl sm:text-2xl xl:text-custom-3 text-dark">
                       {product.title}
                     </h2>
-
-                    <div className="inline-flex font-medium text-custom-sm text-white bg-blue rounded py-0.5 px-2.5">
-                      30% OFF
-                    </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-5.5 mb-4.5">
-                    <div className="flex items-center gap-2.5">
-                      {/* <!-- stars --> */}
-                      <div className="flex items-center gap-1">
-                        <svg
-                          className="fill-[#FFA645]"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_375_9172)">
-                            <path
-                              d="M16.7906 6.72187L11.7 5.93438L9.39377 1.09688C9.22502 0.759375 8.77502 0.759375 8.60627 1.09688L6.30002 5.9625L1.23752 6.72187C0.871891 6.77812 0.731266 7.25625 1.01252 7.50938L4.69689 11.3063L3.82502 16.6219C3.76877 16.9875 4.13439 17.2969 4.47189 17.0719L9.05627 14.5687L13.6125 17.0719C13.9219 17.2406 14.3156 16.9594 14.2313 16.6219L13.3594 11.3063L17.0438 7.50938C17.2688 7.25625 17.1563 6.77812 16.7906 6.72187Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_375_9172">
-                              <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-
-                        <svg
-                          className="fill-[#FFA645]"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_375_9172)">
-                            <path
-                              d="M16.7906 6.72187L11.7 5.93438L9.39377 1.09688C9.22502 0.759375 8.77502 0.759375 8.60627 1.09688L6.30002 5.9625L1.23752 6.72187C0.871891 6.77812 0.731266 7.25625 1.01252 7.50938L4.69689 11.3063L3.82502 16.6219C3.76877 16.9875 4.13439 17.2969 4.47189 17.0719L9.05627 14.5687L13.6125 17.0719C13.9219 17.2406 14.3156 16.9594 14.2313 16.6219L13.3594 11.3063L17.0438 7.50938C17.2688 7.25625 17.1563 6.77812 16.7906 6.72187Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_375_9172">
-                              <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-
-                        <svg
-                          className="fill-[#FFA645]"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_375_9172)">
-                            <path
-                              d="M16.7906 6.72187L11.7 5.93438L9.39377 1.09688C9.22502 0.759375 8.77502 0.759375 8.60627 1.09688L6.30002 5.9625L1.23752 6.72187C0.871891 6.77812 0.731266 7.25625 1.01252 7.50938L4.69689 11.3063L3.82502 16.6219C3.76877 16.9875 4.13439 17.2969 4.47189 17.0719L9.05627 14.5687L13.6125 17.0719C13.9219 17.2406 14.3156 16.9594 14.2313 16.6219L13.3594 11.3063L17.0438 7.50938C17.2688 7.25625 17.1563 6.77812 16.7906 6.72187Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_375_9172">
-                              <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-
-                        <svg
-                          className="fill-[#FFA645]"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_375_9172)">
-                            <path
-                              d="M16.7906 6.72187L11.7 5.93438L9.39377 1.09688C9.22502 0.759375 8.77502 0.759375 8.60627 1.09688L6.30002 5.9625L1.23752 6.72187C0.871891 6.77812 0.731266 7.25625 1.01252 7.50938L4.69689 11.3063L3.82502 16.6219C3.76877 16.9875 4.13439 17.2969 4.47189 17.0719L9.05627 14.5687L13.6125 17.0719C13.9219 17.2406 14.3156 16.9594 14.2313 16.6219L13.3594 11.3063L17.0438 7.50938C17.2688 7.25625 17.1563 6.77812 16.7906 6.72187Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_375_9172">
-                              <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-
-                        <svg
-                          className="fill-[#FFA645]"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_375_9172)">
-                            <path
-                              d="M16.7906 6.72187L11.7 5.93438L9.39377 1.09688C9.22502 0.759375 8.77502 0.759375 8.60627 1.09688L6.30002 5.9625L1.23752 6.72187C0.871891 6.77812 0.731266 7.25625 1.01252 7.50938L4.69689 11.3063L3.82502 16.6219C3.76877 16.9875 4.13439 17.2969 4.47189 17.0719L9.05627 14.5687L13.6125 17.0719C13.9219 17.2406 14.3156 16.9594 14.2313 16.6219L13.3594 11.3063L17.0438 7.50938C17.2688 7.25625 17.1563 6.77812 16.7906 6.72187Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_375_9172">
-                              <rect width="18" height="18" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </div>
-
-                      <span> (5 customer reviews) </span>
-                    </div>
-
-                    <div className="flex items-center gap-1.5">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clipPath="url(#clip0_375_9221)">
-                          <path
-                            d="M10 0.5625C4.78125 0.5625 0.5625 4.78125 0.5625 10C0.5625 15.2188 4.78125 19.4688 10 19.4688C15.2188 19.4688 19.4688 15.2188 19.4688 10C19.4688 4.78125 15.2188 0.5625 10 0.5625ZM10 18.0625C5.5625 18.0625 1.96875 14.4375 1.96875 10C1.96875 5.5625 5.5625 1.96875 10 1.96875C14.4375 1.96875 18.0625 5.59375 18.0625 10.0312C18.0625 14.4375 14.4375 18.0625 10 18.0625Z"
-                            fill="#22AD5C"
-                          />
-                          <path
-                            d="M12.6875 7.09374L8.9688 10.7187L7.2813 9.06249C7.00005 8.78124 6.56255 8.81249 6.2813 9.06249C6.00005 9.34374 6.0313 9.78124 6.2813 10.0625L8.2813 12C8.4688 12.1875 8.7188 12.2812 8.9688 12.2812C9.2188 12.2812 9.4688 12.1875 9.6563 12L13.6875 8.12499C13.9688 7.84374 13.9688 7.40624 13.6875 7.12499C13.4063 6.84374 12.9688 6.84374 12.6875 7.09374Z"
-                            fill="#22AD5C"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_375_9221">
-                            <rect width="20" height="20" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-
-                      <span className="text-green"> In Stock </span>
-                    </div>
-                  </div>
-
-                  <h3 className="font-medium text-custom-1 mb-4.5">
-                    <span className="text-sm sm:text-base text-dark">
-                      Price: ${product.price}
-                    </span>
-                    <span className="line-through">
-                      {" "}
-                      ${product.discountedPrice}{" "}
+                  <h3 className="font-thin text-custom-1 mb-4.5">
+                    <span className="text-3xl text-dark">
+                      Kshs.{" "}
+                      {product.price
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
                   </h3>
+
+                  <div className="prose mb-5">
+                    <PortableText value={product.summary} />
+                  </div>
 
                   <ul className="flex flex-col gap-2">
                     <li className="flex items-center gap-2.5">
@@ -345,10 +203,10 @@ const ShopDetails = () => {
                           fill="#3C50E0"
                         />
                       </svg>
-                      Free delivery available
+                      Free delivery within Nairobi CBD
                     </li>
 
-                    <li className="flex items-center gap-2.5">
+                    {/* <li className="flex items-center gap-2.5">
                       <svg
                         width="20"
                         height="20"
@@ -368,18 +226,17 @@ const ShopDetails = () => {
                         />
                       </svg>
                       Sales 30% Off Use Code: PROMO30
-                    </li>
+                    </li> */}
                   </ul>
 
                   <form onSubmit={(e) => e.preventDefault()}>
                     <div className="flex flex-col gap-4.5 border-y border-gray-3 mt-7.5 mb-9 py-9">
-                      {/* <!-- details item --> */}
                       <div className="flex items-center gap-4">
-                        <div className="min-w-[65px]">
+                        {/* <div className="min-w-[65px]">
                           <h4 className="font-medium text-dark">Color:</h4>
-                        </div>
+                        </div> */}
 
-                        <div className="flex items-center gap-2.5">
+                        {/* <div className="flex items-center gap-2.5">
                           {colors.map((color, key) => (
                             <label
                               key={key}
@@ -408,10 +265,13 @@ const ShopDetails = () => {
                               </div>
                             </label>
                           ))}
+                        </div> */}
+                        <h3 className="font-medium my-4">Product Summary:</h3>
+                        <div className="prose mb-5">
+                          <PortableText value={product.summary} />
                         </div>
                       </div>
-
-                      {/* <!-- details item --> */}
+                      {/* 
                       <div className="flex items-center gap-4">
                         <div className="min-w-[65px]">
                           <h4 className="font-medium text-dark">Storage:</h4>
@@ -433,7 +293,6 @@ const ShopDetails = () => {
                                   onChange={() => setStorage(item.id)}
                                 />
 
-                                {/*  */}
                                 <div
                                   className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
                                     storage === item.id
@@ -477,10 +336,9 @@ const ShopDetails = () => {
                             </label>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* // <!-- details item --> */}
-                      <div className="flex items-center gap-4">
+                      {/* <div className="flex items-center gap-4">
                         <div className="min-w-[65px]">
                           <h4 className="font-medium text-dark">Type:</h4>
                         </div>
@@ -501,7 +359,6 @@ const ShopDetails = () => {
                                   onChange={() => setType(item.id)}
                                 />
 
-                                {/*  */}
                                 <div
                                   className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
                                     type === item.id
@@ -545,10 +402,9 @@ const ShopDetails = () => {
                             </label>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* // <!-- details item --> */}
-                      <div className="flex items-center gap-4">
+                      {/* <div className="flex items-center gap-4">
                         <div className="min-w-[65px]">
                           <h4 className="font-medium text-dark">Sim:</h4>
                         </div>
@@ -569,7 +425,6 @@ const ShopDetails = () => {
                                   onChange={() => setSim(item.id)}
                                 />
 
-                                {/*  */}
                                 <div
                                   className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
                                     sim === item.id
@@ -613,7 +468,7 @@ const ShopDetails = () => {
                             </label>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="flex flex-wrap items-center gap-4.5">
@@ -731,31 +586,17 @@ const ShopDetails = () => {
                     activeTab === "tabOne" ? "flex" : "hidden"
                   }`}
                 >
-                  <div className="max-w-[670px] w-full">
+                  <div className=" w-full">
                     <h2 className="font-medium text-2xl text-dark mb-7">
                       Specifications:
                     </h2>
 
-                    <p className="mb-6">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                      when an unknown printer took a galley of type and
-                      scrambled it to make a type specimen book.
-                    </p>
-                    <p className="mb-6">
-                      It has survived not only five centuries, but also the leap
-                      into electronic typesetting, remaining essentially
-                      unchanged. It was popularised in the 1960s.
-                    </p>
-                    <p>
-                      with the release of Letraset sheets containing Lorem Ipsum
-                      passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions.
-                    </p>
+                    <div className="prose mb-5">
+                      <PortableText value={product.description} />
+                    </div>
                   </div>
 
-                  <div className="max-w-[447px] w-full">
+                  {/* <div className="max-w-[447px] w-full">
                     <h2 className="font-medium text-2xl text-dark mb-7">
                       Care & Maintenance:
                     </h2>
@@ -772,7 +613,7 @@ const ShopDetails = () => {
                       into electronic typesetting, remaining essentially
                       unchanged. It was popularised in the 1960s.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               {/* <!-- tab content one end --> */}
@@ -1444,9 +1285,9 @@ const ShopDetails = () => {
             </div>
           </section>
 
-          <RecentlyViewdItems />
+          {/* <RecentlyViewdItems /> */}
 
-          <Newsletter />
+          {/* <Newsletter /> */}
         </>
       )}
     </>

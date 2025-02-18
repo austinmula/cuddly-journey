@@ -2,7 +2,7 @@ import React from "react";
 
 const Discount = () => {
   return (
-    <div className="lg:max-w-[670px] w-full">
+    <div className="lg:max-w-[670px] w-full invisible">
       <form>
         {/* <!-- coupon box --> */}
         <div className="bg-white shadow-1 rounded-[10px]">

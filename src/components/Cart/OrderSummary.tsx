@@ -28,13 +28,16 @@ const OrderSummary = () => {
 
           {/* <!-- product item --> */}
           {cartItems.map((item, key) => (
-            <div key={key} className="flex items-center justify-between py-5 border-b border-gray-3">
+            <div
+              key={key}
+              className="flex items-center justify-between py-5 border-b border-gray-3"
+            >
               <div>
                 <p className="text-dark">{item.title}</p>
               </div>
               <div>
                 <p className="text-dark text-right">
-                  ${item.discountedPrice * item.quantity}
+                  Kshs. {item.price * item.quantity}
                 </p>
               </div>
             </div>
@@ -47,7 +50,7 @@ const OrderSummary = () => {
             </div>
             <div>
               <p className="font-medium text-lg text-dark text-right">
-                ${totalPrice}
+                Kshs. {totalPrice}
               </p>
             </div>
           </div>
@@ -57,7 +60,7 @@ const OrderSummary = () => {
             type="submit"
             className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
           >
-            Process to Checkout
+            Proceed to Checkout
           </button>
         </div>
       </div>

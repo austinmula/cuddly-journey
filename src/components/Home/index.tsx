@@ -7,17 +7,22 @@ import BestSeller from "./BestSeller";
 import CounDown from "./Countdown";
 import Testimonials from "./Testimonials";
 import Newsletter from "../Common/Newsletter";
+import { getCategories, getRecentProducts } from "@/lib/api";
+import { Category } from "@/models/category";
+import { Product } from "@/models/product";
 
-const Home = () => {
+const Home = async () => {
+  const categories: Category[] = await getCategories();
+  const recentProducts: Product[] = await getRecentProducts();
   return (
     <main>
       <Hero />
-      <Categories />
-      <NewArrival />
-      <PromoBanner />
+      <Categories categories={categories} />
+      <NewArrival recentProducts={recentProducts} />
+      {/* <PromoBanner />
       <BestSeller />
       <CounDown />
-      <Testimonials />
+      <Testimonials /> */}
       <Newsletter />
     </main>
   );
