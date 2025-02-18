@@ -6,8 +6,8 @@ import { getCategories, getProducts } from "@/lib/api";
 import { Product } from "@/models/product";
 import { Category } from "@/models/category";
 export const metadata: Metadata = {
-  title: "Shop Page | NextCommerce Nextjs E-commerce template",
-  description: "This is Shop Page for NextCommerce Template",
+  title: "Shop Page | SharpSpaceLtd Nextjs E-commerce template",
+  description: "This is Shop Page for SharpSpaceLtd Template",
   // other metadata
 };
 
