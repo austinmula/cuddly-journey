@@ -10,11 +10,55 @@ import PriceDropdown from "./PriceDropdown";
 import shopData from "../Shop/shopData";
 import SingleGridItem from "../Shop/SingleGridItem";
 import SingleListItem from "../Shop/SingleListItem";
+import { Product } from "@/models/product";
+import { getCategories, getProductsByFilters } from "@/lib/api";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Category } from "@/models/category";
 
 const ShopWithSidebar = () => {
   const [productStyle, setProductStyle] = useState("grid");
   const [productSidebar, setProductSidebar] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Get filters from URL
+  const selectedCategory = searchParams.get("category") || null;
+  const minPrice = searchParams.get("minPrice") ? Number(searchParams.get("minPrice")) : 0;
+  const maxPrice = searchParams.get("maxPrice") ? Number(searchParams.get("maxPrice")) : 500000; // Adjust as needed
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedCategories = await getCategories();
+        console.log(fetchedCategories)
+        setCategories(fetchedCategories);
+        
+      } catch (error) {
+        console.log(error)
+        setCategories([])
+      }
+
+      const fetchedProducts = await getProductsByFilters(selectedCategory || undefined, priceRange[0], priceRange[1]);
+      setProducts(fetchedProducts);
+    };
+
+    fetchData();
+  }, []);
+
+  // Update URL when filters change
+  const updateFilters = (categoryId: string | null, min: number, max: number) => {
+    const newParams = new URLSearchParams();
+    if (categoryId) newParams.set("category", categoryId);
+    if (min !== 0) newParams.set("minPrice", min.toString());
+    if (max !== 500000) newParams.set("maxPrice", max.toString());
+    router.push(`/shop?${newParams.toString()}`);
+  };
 
   const handleStickyMenu = () => {
     if (window.scrollY >= 80) {
@@ -30,38 +74,38 @@ const ShopWithSidebar = () => {
     { label: "Old Products", value: "2" },
   ];
 
-  const categories = [
-    {
-      name: "Desktop",
-      products: 10,
-      isRefined: true,
-    },
-    {
-      name: "Laptop",
-      products: 12,
-      isRefined: false,
-    },
-    {
-      name: "Monitor",
-      products: 30,
-      isRefined: false,
-    },
-    {
-      name: "UPS",
-      products: 23,
-      isRefined: false,
-    },
-    {
-      name: "Phone",
-      products: 10,
-      isRefined: false,
-    },
-    {
-      name: "Watch",
-      products: 13,
-      isRefined: false,
-    },
-  ];
+  // const categories = [
+  //   {
+  //     name: "Desktop",
+  //     products: 10,
+  //     isRefined: true,
+  //   },
+  //   {
+  //     name: "Laptop",
+  //     products: 12,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Monitor",
+  //     products: 30,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "UPS",
+  //     products: 23,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Phone",
+  //     products: 10,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Watch",
+  //     products: 13,
+  //     isRefined: false,
+  //   },
+  // ];
 
   const genders = [
     {
@@ -101,7 +145,7 @@ const ShopWithSidebar = () => {
     <>
       <Breadcrumb
         title={"Explore All Products"}
-        pages={["shop", "/", "shop with sidebar"]}
+        pages={["shop", "/", "product shop"]}
       />
       <section className="overflow-hidden relative pb-20 pt-5 lg:pt-20 xl:pt-28 bg-[#f3f4f6]">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
@@ -157,19 +201,19 @@ const ShopWithSidebar = () => {
                   </div>
 
                   {/* <!-- category box --> */}
-                  <CategoryDropdown categories={categories} />
+                  <CategoryDropdown updateFilters={updateFilters} selectedCategory={selectedCategory} categories={categories} priceRange={priceRange}/>
 
                   {/* <!-- gender box --> */}
-                  <GenderDropdown genders={genders} />
+                  {/* <GenderDropdown genders={genders} /> */}
 
                   {/* // <!-- size box --> */}
-                  <SizeDropdown />
+                  {/* <SizeDropdown /> */}
 
                   {/* // <!-- color box --> */}
-                  <ColorsDropdwon />
+                  {/* <ColorsDropdwon /> */}
 
                   {/* // <!-- price range box --> */}
-                  <PriceDropdown />
+                  <PriceDropdown setPriceRange={setPriceRange} priceRange={priceRange} />
                 </div>
               </form>
             </div>
@@ -278,7 +322,7 @@ const ShopWithSidebar = () => {
                     : "flex flex-col gap-7.5"
                 }`}
               >
-                {shopData.map((item, key) =>
+                {products.map((item, key) =>
                   productStyle === "grid" ? (
                     <SingleGridItem item={item} key={key} />
                   ) : (

@@ -83,7 +83,7 @@ const RecentlyViewdItems = () => {
             </div>
           </div>
 
-          <Swiper
+          {/* <Swiper
             ref={sliderRef}
             slidesPerView={4}
             spaceBetween={20}
@@ -94,7 +94,7 @@ const RecentlyViewdItems = () => {
                 <ProductItem item={item} />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
         </div>
       </div>
     </section>
