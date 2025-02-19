@@ -2,23 +2,23 @@
 
 import { useState } from "react";
 
-const CategoryItem = ({ category }) => {
-  const [selected, setSelected] = useState(false);
+const CategoryItem = ({ updateFilters,category, priceRange, selectedCategory }) => {
+  // const [selected, setSelected] = useState(false);
   return (
     <button
       className={`${
-        selected && "text-blue"
+        selectedCategory === category._id && "text-blue"
       } group flex items-center justify-between ease-out duration-200 hover:text-blue `}
-      onClick={() => setSelected(!selected)}
+      onClick={() => updateFilters(category._id, priceRange[0], priceRange[1])}
     >
       <div className="flex items-center gap-2">
         <div
           className={`cursor-pointer flex items-center justify-center rounded w-4 h-4 border ${
-            selected ? "border-blue bg-blue" : "bg-white border-gray-3"
+            selectedCategory === category._id ? "border-blue bg-blue" : "bg-white border-gray-3"
           }`}
         >
           <svg
-            className={selected ? "block" : "hidden"}
+            className={selectedCategory === category._id ? "block" : "hidden"}
             width="10"
             height="10"
             viewBox="0 0 10 10"
@@ -49,7 +49,7 @@ const CategoryItem = ({ category }) => {
   );
 };
 
-const CategoryDropdown = ({ categories }) => {
+const CategoryDropdown = ({ updateFilters, selectedCategory, categories, priceRange }) => {
   const [toggleDropdown, setToggleDropdown] = useState(true);
 
   return (
@@ -96,7 +96,7 @@ const CategoryDropdown = ({ categories }) => {
         }`}
       >
         {categories.map((category, key) => (
-          <CategoryItem key={key} category={category} />
+          <CategoryItem key={key} updateFilters={updateFilters} selectedCategory={selectedCategory} category={category} priceRange={priceRange} />
         ))}
       </div>
     </div>

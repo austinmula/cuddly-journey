@@ -12,11 +12,10 @@ export const metadata: Metadata = {
 };
 
 const ShopWithSidebarPage = async () => {
-  const categories: Category[] = await getCategories();
-  const products: Product[] = await getProducts();
+
   return (
     <main>
-      <ShopWithSidebar products={products} categories={categories}/>
+      <ShopWithSidebar />
     </main>
   );
 };

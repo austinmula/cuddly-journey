@@ -139,6 +139,75 @@ export const getProductById = async (id: string): Promise<Product | null> => {
   return product;
 };
 
+export const getProductsByFilters = async (categoryId?: string, minPrice?: number, maxPrice?: number): Promise<Product[]> => {
+  const query = `*[_type == "product"
+    ${categoryId ? `&& category._ref == $categoryId` : ""}
+    ${minPrice ? `&& price >= $minPrice` : ""}
+    ${maxPrice ? `&& price <= $maxPrice` : ""}
+  ] | order(createdAt desc) {
+    _id,
+    title,
+    slug,
+    brand,
+    price,
+    stock,
+    category->{
+      _id,
+      title,
+      slug
+    },
+    images,
+    description,
+    specifications,
+    variants,
+    reviews,
+    relatedProducts[]->{
+      _id,
+      title,
+      slug
+    },
+    createdAt
+  }`;
+
+  const params: any = {};
+  if (categoryId) params.categoryId = categoryId;
+  if (minPrice) params.minPrice = minPrice;
+  if (maxPrice) params.maxPrice = maxPrice;
+
+  return await sanityClient.fetch(query, params);
+};
+
+export const getProductsByCategory = async (categoryId?: string): Promise<Product[]> => {
+  const query = `*[_type == "product" ${categoryId ? `&& category._ref == $categoryId` : ""}] | order(createdAt desc) {
+    _id,
+    title,
+    slug,
+    brand,
+    price,
+    stock,
+    category->{
+      _id,
+      title,
+      slug
+    },
+    images,
+    description,
+    specifications,
+    variants,
+    reviews,
+    relatedProducts[]->{
+      _id,
+      title,
+      slug
+    },
+    createdAt
+  }`;
+
+  const products: Product[] = await sanityClient.fetch(query, categoryId ? { categoryId } : {});
+  return products;
+};
+
+
 
 // export const getGames = async (): Promise<Game[]> => {
 // 	const query = `*[_type == "game"] {
