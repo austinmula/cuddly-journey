@@ -75,7 +75,7 @@ const SingleItem = ({ item }) => {
       </div>
 
       <div className="min-w-[205px]">
-        <p className="text-dark">Kshs. {item.price}</p>
+        <p className="text-dark">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       </div>
 
       <div className="min-w-[265px]">

@@ -55,7 +55,7 @@ const SingleItem = ({ item }) => {
       </div>
 
       <div className="min-w-[180px]">
-        <p className="text-dark">Kshs. {item.price}</p>
+        <p className="text-dark">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       </div>
 
       <div className="min-w-[275px]">
@@ -111,7 +111,7 @@ const SingleItem = ({ item }) => {
       </div>
 
       <div className="min-w-[200px]">
-        <p className="text-dark">Kshs. {item.price * quantity}</p>
+        <p className="text-dark">Kshs. {(item.price * quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       </div>
 
       <div className="min-w-[50px] flex justify-end">

@@ -37,7 +37,7 @@ const OrderSummary = () => {
               </div>
               <div>
                 <p className="text-dark text-right">
-                  Kshs. {item.price * item.quantity}
+                  Kshs. {(item.price * item.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@ const OrderSummary = () => {
             </div>
             <div>
               <p className="font-medium text-lg text-dark text-right">
-                Kshs. {totalPrice}
+                Kshs. {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </p>
             </div>
           </div>
