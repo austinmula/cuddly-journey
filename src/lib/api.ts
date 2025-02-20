@@ -100,12 +100,15 @@ export const getProductBySlug = async (
     relatedProducts[]->{
       _id,
       title,
-      slug
+      slug,
+      price,
+      images,
     },
     createdAt
   }`;
 
   const product: Product | null = await sanityClient.fetch(query, { slug });
+  console.log(product)
   return product;
 };
 
@@ -130,12 +133,15 @@ export const getProductById = async (id: string): Promise<Product | null> => {
     relatedProducts[]->{
       _id,
       title,
-      slug
+      slug,
+      price,
+      images
     },
     createdAt
   }`;
 
   const product: Product | null = await sanityClient.fetch(query, { id });
+  console.log(product)
   return product;
 };
 
