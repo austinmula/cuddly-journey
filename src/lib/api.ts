@@ -174,7 +174,9 @@ export const getProductsByFilters = async (categoryId?: string, minPrice?: numbe
   if (minPrice) params.minPrice = minPrice;
   if (maxPrice) params.maxPrice = maxPrice;
 
-  return await sanityClient.fetch(query, params);
+  const products: Product[] =  await sanityClient.fetch(query, params, {cache: "no-cache"});
+
+  return products;
 };
 
 export const getProductsByCategory = async (categoryId?: string): Promise<Product[]> => {
@@ -204,6 +206,7 @@ export const getProductsByCategory = async (categoryId?: string): Promise<Produc
   }`;
 
   const products: Product[] = await sanityClient.fetch(query, categoryId ? { categoryId } : {});
+  console.log(products)
   return products;
 };
 
