@@ -242,7 +242,7 @@ const Header = () => {
                       cart
                     </span>
                     <p className="font-medium text-custom-sm text-dark">
-                      Kshs. {totalPrice}
+                      Kshs. {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </p>
                   </div>
                 </button>

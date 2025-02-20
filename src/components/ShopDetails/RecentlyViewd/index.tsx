@@ -10,7 +10,7 @@ import { useCallback, useRef } from "react";
 import "swiper/css/navigation";
 import "swiper/css";
 
-const RecentlyViewdItems = () => {
+const RecentlyViewdItems = ({ relatedProducts }) => {
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
@@ -37,10 +37,10 @@ const RecentlyViewdItems = () => {
                   height={17}
                   alt="icon"
                 />
-                Categories
+                You might also like
               </span>
               <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">
-                Browse by Category
+                Related Products
               </h2>
             </div>
 
@@ -83,18 +83,18 @@ const RecentlyViewdItems = () => {
             </div>
           </div>
 
-          {/* <Swiper
+          <Swiper
             ref={sliderRef}
             slidesPerView={4}
             spaceBetween={20}
             className="justify-between"
           >
-            {shopData.map((item, key) => (
+            {relatedProducts?.map((item, key) => (
               <SwiperSlide key={key}>
                 <ProductItem item={item} />
               </SwiperSlide>
             ))}
-          </Swiper> */}
+          </Swiper>
         </div>
       </div>
     </section>

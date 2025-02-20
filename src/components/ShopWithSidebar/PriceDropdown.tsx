@@ -4,7 +4,7 @@ import Slider from "react-slider";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
-const PriceDropdown = ({ setPriceRange, priceRange }) => {
+const PriceDropdown = ({ setPriceRange, priceRange, updateFilters, selectedCategory }) => {
   const [toggleDropdown, setToggleDropdown] = useState(true);
 
   const [selectedPrice, setSelectedPrice] = useState({
@@ -56,13 +56,10 @@ const PriceDropdown = ({ setPriceRange, priceRange }) => {
               max={500000}
               value={priceRange}
               // onChange={(newRange) => setPriceRange(newRange as [number, number])}
-              onInput={e => setPriceRange([e[0], e[1]])}
-            // onInput={(e) =>
-            //   setSelectedPrice({
-            //     from: Math.floor(e[0]),
-            //     to: Math.ceil(e[1]),
-            //   })
-            // }
+              onInput={(e) => {
+                setSelectedPrice({ from: Math.floor(e[0]), to: Math.ceil(e[1]), })
+                setPriceRange([e[0], e[1]])
+              }}
             />
 
             <div className="price-amount flex items-center justify-between pt-4">
@@ -71,7 +68,7 @@ const PriceDropdown = ({ setPriceRange, priceRange }) => {
                   Kshs.
                 </span>
                 <span id="minAmount" className="block px-3 py-1.5">
-                  {selectedPrice.from}
+                  {selectedPrice.from.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </span>
               </div>
 
@@ -80,10 +77,16 @@ const PriceDropdown = ({ setPriceRange, priceRange }) => {
                   Kshs.
                 </span>
                 <span id="maxAmount" className="block px-3 py-1.5">
-                  {selectedPrice.to}
+                  {selectedPrice.to.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </span>
               </div>
             </div>
+            <button
+              onClick={() => updateFilters(selectedCategory, priceRange[0], priceRange[1])}
+              className="inline-flex w-full justify-center font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue mt-10"
+            >
+              Apply Filter
+            </button>
           </div>
         </div>
       </div>

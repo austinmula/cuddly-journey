@@ -32,7 +32,7 @@ export const getProducts = async (): Promise<Product[]> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -48,7 +48,7 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export const getRecentProducts = async (): Promise<Product[]> => {
-  const query = `*[_type == "product"] | order(createdAt desc) [0...9] {
+  const query = `*[_type == "product"] | order(createdAt desc) [0...8] {
     _id,
     title,
     slug,
@@ -62,7 +62,7 @@ export const getRecentProducts = async (): Promise<Product[]> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -94,7 +94,7 @@ export const getProductBySlug = async (
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -124,7 +124,7 @@ export const getProductById = async (id: string): Promise<Product | null> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -158,7 +158,7 @@ export const getProductsByFilters = async (categoryId?: string, minPrice?: numbe
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -174,7 +174,9 @@ export const getProductsByFilters = async (categoryId?: string, minPrice?: numbe
   if (minPrice) params.minPrice = minPrice;
   if (maxPrice) params.maxPrice = maxPrice;
 
-  return await sanityClient.fetch(query, params);
+  const products: Product[] =  await sanityClient.fetch(query, params, {cache: "no-cache"});
+
+  return products;
 };
 
 export const getProductsByCategory = async (categoryId?: string): Promise<Product[]> => {
@@ -192,7 +194,7 @@ export const getProductsByCategory = async (categoryId?: string): Promise<Produc
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -204,6 +206,7 @@ export const getProductsByCategory = async (categoryId?: string): Promise<Produc
   }`;
 
   const products: Product[] = await sanityClient.fetch(query, categoryId ? { categoryId } : {});
+  console.log(products)
   return products;
 };
 

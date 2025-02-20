@@ -96,7 +96,7 @@ const CartSidebarModal = () => {
               <p className="font-medium text-xl text-dark">Subtotal:</p>
 
               <p className="font-medium text-xl text-dark">
-                Kshs. {totalPrice}
+                Kshs. {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </p>
             </div>
 

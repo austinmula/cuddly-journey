@@ -315,7 +315,7 @@ const QuickViewModal = () => {
 
                   <span className="flex items-center gap-2">
                     <span className="font-semibold text-dark text-xl xl:text-heading-4">
-                      Kshs. {product.price}
+                      Kshs. {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
                     {/* <span className="font-medium text-dark-4 text-lg xl:text-2xl line-through">
                       Kshs. {product.price}

@@ -145,11 +145,10 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                       <button
                         onClick={() => setPreviewImg(key)}
                         key={key}
-                        className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${
-                          key === previewImg
+                        className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${key === previewImg
                             ? "border-blue"
                             : "border-transparent"
-                        }`}
+                          }`}
                       >
                         <Image
                           width={50}
@@ -179,9 +178,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                     </span>
                   </h3>
 
-                  <div className="prose mb-5">
+                  {/* <div className="prose mb-5">
                     <PortableText value={product.summary} />
-                  </div>
+                  </div> */}
 
                   <ul className="flex flex-col gap-2">
                     <li className="flex items-center gap-2.5">
@@ -267,9 +266,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                           ))}
                         </div> */}
                         <h3 className="font-medium my-4">Product Summary:</h3>
-                        <div className="prose mb-5">
-                          <PortableText value={product.summary} />
-                        </div>
+                      </div>
+                      <div className="prose mb-5">
+                        <PortableText value={product.summary} />
                       </div>
                       {/* 
                       <div className="flex items-center gap-4">
@@ -566,11 +565,10 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                   <button
                     key={key}
                     onClick={() => setActiveTab(item.id)}
-                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${
-                      activeTab === item.id
+                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${activeTab === item.id
                         ? "text-blue before:w-full"
                         : "text-dark before:w-0"
-                    }`}
+                      }`}
                   >
                     {item.title}
                   </button>
@@ -582,9 +580,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content one start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
-                    activeTab === "tabOne" ? "flex" : "hidden"
-                  }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabOne" ? "flex" : "hidden"
+                    }`}
                 >
                   <div className=" w-full">
                     <h2 className="font-medium text-2xl text-dark mb-7">
@@ -621,9 +618,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content two start --> */}
               <div>
                 <div
-                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${
-                    activeTab === "tabTwo" ? "block" : "hidden"
-                  }`}
+                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${activeTab === "tabTwo" ? "block" : "hidden"
+                    }`}
                 >
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
@@ -764,9 +760,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content three start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
-                    activeTab === "tabThree" ? "flex" : "hidden"
-                  }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabThree" ? "flex" : "hidden"
+                    }`}
                 >
                   <div className="max-w-[570px] w-full">
                     <h2 className="font-medium text-2xl text-dark mb-9">
@@ -1285,7 +1280,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
             </div>
           </section>
 
-          {/* <RecentlyViewdItems /> */}
+          <RecentlyViewdItems relatedProducts={product.relatedProducts} />
 
           {/* <Newsletter /> */}
         </>

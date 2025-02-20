@@ -44,7 +44,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
   return (
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[270px] mb-4">
-        <Image src={urlFor(item.images[0]).toString()} alt="" width={250} height={250} />
+        <Image   src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"} alt="" width={250} height={250} />
 
         <div className="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
           <button
@@ -153,7 +153,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
       </h3>
 
       <span className="flex items-center gap-2 font-medium text-lg">
-        <span className="text-dark">Kshs. {item.price}</span>
+        <span className="text-dark">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
         {/* <span className="text-dark-4 line-through">${item.price}</span> */}
       </span>
     </div>
