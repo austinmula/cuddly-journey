@@ -15,7 +15,7 @@ import { urlFor } from "@/lib/urlFor";
 const ProductItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
 
-  const phoneNumber = "+254700203043";
+  const phoneNumber = "254722652000";
 
   const dispatch = useDispatch<AppDispatch>();
 
