@@ -59,7 +59,7 @@ const SingleItem = ({ item }) => {
           <div className="w-full flex items-center gap-5.5">
             <div className="flex items-center justify-center rounded-[5px] bg-gray-2 max-w-[80px] w-full h-17.5">
               <Image
-                src={urlFor(item.images[0]).toString()}
+                  src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
                 alt="product"
                 width={200}
                 height={200}

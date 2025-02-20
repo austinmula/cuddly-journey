@@ -10,7 +10,7 @@ import { useCallback, useRef } from "react";
 import "swiper/css/navigation";
 import "swiper/css";
 
-const RecentlyViewdItems = ({relatedProducts}) => {
+const RecentlyViewdItems = ({ relatedProducts }) => {
   const sliderRef = useRef(null);
 
   const handlePrev = useCallback(() => {
@@ -89,7 +89,7 @@ const RecentlyViewdItems = ({relatedProducts}) => {
             spaceBetween={20}
             className="justify-between"
           >
-            {relatedProducts.map((item, key) => (
+            {relatedProducts?.map((item, key) => (
               <SwiperSlide key={key}>
                 <ProductItem item={item} />
               </SwiperSlide>
