@@ -18,8 +18,6 @@ const ShopDetailsPage = async ({
 
   const product = await getProductBySlug(slug);
 
-  console.log(product);
-
   if (!product) return <p>Product not found</p>;
 
   return (

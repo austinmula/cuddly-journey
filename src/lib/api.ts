@@ -32,7 +32,7 @@ export const getProducts = async (): Promise<Product[]> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -62,7 +62,7 @@ export const getRecentProducts = async (): Promise<Product[]> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -94,7 +94,7 @@ export const getProductBySlug = async (
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -124,7 +124,7 @@ export const getProductById = async (id: string): Promise<Product | null> => {
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -158,7 +158,7 @@ export const getProductsByFilters = async (categoryId?: string, minPrice?: numbe
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{
@@ -194,7 +194,7 @@ export const getProductsByCategory = async (categoryId?: string): Promise<Produc
     },
     images,
     description,
-    specifications,
+    summary,
     variants,
     reviews,
     relatedProducts[]->{

@@ -61,4 +61,15 @@ export interface RelatedProduct {
   slug: {
     current: string;
   };
+  brand: string;
+  price: number;
+  stock: number;
+  category: {
+    _id: string;
+    title: string;
+    slug: {
+      current: string;
+    };
+  };
+  images: Image[];
 }

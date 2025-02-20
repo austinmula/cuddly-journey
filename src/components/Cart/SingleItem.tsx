@@ -7,6 +7,7 @@ import {
 } from "@/redux/features/cart-slice";
 
 import Image from "next/image";
+import { urlFor } from "@/lib/urlFor";
 
 const SingleItem = ({ item }) => {
   const [quantity, setQuantity] = useState(item.quantity);
@@ -40,7 +41,7 @@ const SingleItem = ({ item }) => {
               <Image
                 width={200}
                 height={200}
-                src={item.images[0]}
+                src={urlFor(item.images[0]).toString()}
                 alt="product"
               />
             </div>
