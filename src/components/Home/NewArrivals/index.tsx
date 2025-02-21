@@ -1,11 +1,27 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ProductItem from "@/components/Common/ProductItem";
 import shopData from "@/components/Shop/shopData";
 import { Product } from "@/models/product";
+import { getRecentProducts } from "@/lib/api";
 
-const NewArrival = ({ recentProducts }: { recentProducts: Product[] }) => {
+const NewArrival = () => {
+  const [recentProducts, setRecentProducts] = useState<Product[]>([])
+
+  useEffect(()=> {
+    getRecentProductData();
+  }, [])
+
+  const getRecentProductData = async() => {
+    try {
+      const data = await getRecentProducts()
+      setRecentProducts(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <section className="overflow-hidden pt-15">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">

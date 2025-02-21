@@ -1,10 +1,29 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import SingleItem from "./SingleItem";
 import Image from "next/image";
 import Link from "next/link";
 import shopData from "@/components/Shop/shopData";
+import { Product } from "@/models/product";
+import { getRandomProducts } from "@/lib/api";
 
-const BestSeller = ({topPicks}) => {
+const BestSeller = () => {
+
+   const [topPicks, setTopPicks] = useState<Product[]>([])
+  
+    useEffect(()=> {
+      getRecentProductData();
+    }, [])
+  
+    const getRecentProductData = async() => {
+      try {
+        const data = await getRandomProducts()
+        setTopPicks(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
   return (
     <section className="overflow-hidden">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">

@@ -1,7 +1,18 @@
+"use client"
 import React from "react";
 import Breadcrumb from "../Common/Breadcrumb";
+import { useRouter } from "next/navigation";
 
 const Contact = () => {
+
+  const router = useRouter()
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    router.push('/mail-success')
+  }
+
   return (
     <>
       <Breadcrumb title={"Contact"} pages={["contact"]} />
@@ -33,7 +44,7 @@ const Contact = () => {
                         fill="#273057"
                       />
                     </svg>
-                    Name: James Septimus
+                    Name: SharpSpace LTD
                   </p>
 
                   <p className="flex items-center gap-4">
@@ -61,7 +72,7 @@ const Contact = () => {
                         fill="#273057"
                       />
                     </svg>
-                    Phone: 1234 567890
+                    Phone: +254 722 652 000
                   </p>
 
                   <p className="flex gap-4">
@@ -80,7 +91,7 @@ const Contact = () => {
                         fill="#273057"
                       />
                     </svg>
-                    Address: 7398 Smoke Ranch RoadLas Vegas, Nevada 89128
+                    Address: Tsavo Road, Nairobi - Kenya.
                   </p>
                 </div>
               </div>
@@ -164,6 +175,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
+                  onClick={handleSubmit}
                   className="inline-flex font-medium text-white bg-blue py-3 px-7 rounded-md ease-out duration-200 hover:bg-blue-dark"
                 >
                   Send Message
