@@ -131,7 +131,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                       </button> */}
 
                       <Image
-                        src={urlFor(product.images[previewImg]).toString()}
+                        src={product.images ? urlFor(product.images[previewImg]).toString() : "/images/quickview/quickview-big-07.png"}
                         alt="products-details"
                         width={400}
                         height={400}
@@ -141,13 +141,13 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
 
                   {/* ?  &apos;border-blue &apos; :  &apos;border-transparent&apos; */}
                   <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                    {product.images.map((item, key) => (
+                    {product.images && product.images.map((item, key) => (
                       <button
                         onClick={() => setPreviewImg(key)}
                         key={key}
                         className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${key === previewImg
-                            ? "border-blue"
-                            : "border-transparent"
+                          ? "border-blue"
+                          : "border-transparent"
                           }`}
                       >
                         <Image
@@ -566,8 +566,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                     key={key}
                     onClick={() => setActiveTab(item.id)}
                     className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${activeTab === item.id
-                        ? "text-blue before:w-full"
-                        : "text-dark before:w-0"
+                      ? "text-blue before:w-full"
+                      : "text-dark before:w-0"
                       }`}
                   >
                     {item.title}

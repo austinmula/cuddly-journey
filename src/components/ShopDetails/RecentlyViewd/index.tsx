@@ -89,7 +89,7 @@ const RecentlyViewdItems = ({ relatedProducts }) => {
             spaceBetween={20}
             className="justify-between"
           >
-            {relatedProducts?.map((item, key) => (
+            {relatedProducts && relatedProducts?.map((item, key) => (
               <SwiperSlide key={key}>
                 <ProductItem item={item} />
               </SwiperSlide>

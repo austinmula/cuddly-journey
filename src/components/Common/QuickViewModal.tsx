@@ -9,6 +9,7 @@ import Image from "next/image";
 import { usePreviewSlider } from "@/app/context/PreviewSliderContext";
 import { resetQuickView } from "@/redux/features/quickView-slice";
 import { updateproductDetails } from "@/redux/features/product-details";
+import { PortableText } from "@portabletext/react";
 
 const QuickViewModal = () => {
   const { isModalOpen, closeModal } = useModalContext();
@@ -62,9 +63,8 @@ const QuickViewModal = () => {
 
   return (
     <div
-      className={`${
-        isModalOpen ? "z-99999" : "hidden"
-      } fixed top-0 left-0 overflow-y-auto no-scrollbar w-full h-screen sm:py-20 xl:py-25 2xl:py-[230px] bg-dark/70 sm:px-8 px-4 py-5`}
+      className={`${isModalOpen ? "z-99999" : "hidden"
+        } fixed top-0 left-0 overflow-y-auto no-scrollbar w-full h-screen sm:py-20 xl:py-25 2xl:py-[230px] bg-dark/70 sm:px-8 px-4 py-5`}
     >
       <div className="flex items-center justify-center ">
         <div className="w-full max-w-[1100px] rounded-xl shadow-3 bg-white p-7.5 relative modal-content">
@@ -149,17 +149,17 @@ const QuickViewModal = () => {
             </div>
 
             <div className="max-w-[445px] w-full">
-              <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-6.5">
+              {/* <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-6.5">
                 SALE 20% OFF
-              </span>
+              </span> */}
 
               <h3 className="font-semibold text-xl xl:text-heading-5 text-dark mb-4">
                 {product.title}
               </h3>
 
               <div className="flex flex-wrap items-center gap-5 mb-6">
-                <div className="flex items-center gap-1.5">
-                  {/* <!-- stars --> */}
+                {/* <div className="flex items-center gap-1.5">
+                
                   <div className="flex items-center gap-1">
                     <svg
                       className="fill-[#FFA645]"
@@ -271,7 +271,7 @@ const QuickViewModal = () => {
                     <span className="font-medium text-dark"> 4.7 Rating </span>
                     <span className="text-dark-2"> (5 reviews) </span>
                   </span>
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-2">
                   <svg
@@ -298,14 +298,13 @@ const QuickViewModal = () => {
                     </defs>
                   </svg>
 
-                  <span className="font-medium text-dark"> In Stock </span>
+                  {/* <span className="font-medium text-dark"> In Stock </span> */}
                 </div>
               </div>
 
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has.
-              </p>
+              <div className="prose mb-5">
+                <PortableText value={product.summary} />
+              </div>
 
               <div className="flex flex-wrap justify-between gap-5 mt-6 mb-7.5">
                 <div>
