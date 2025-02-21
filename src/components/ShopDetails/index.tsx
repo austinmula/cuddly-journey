@@ -5,10 +5,12 @@ import Image from "next/image";
 import Newsletter from "../Common/Newsletter";
 import RecentlyViewdItems from "./RecentlyViewd";
 import { usePreviewSlider } from "@/app/context/PreviewSliderContext";
-import { useAppSelector } from "@/redux/store";
+import { useAppSelector, AppDispatch } from "@/redux/store";
 import { Product } from "@/models/product";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/lib/urlFor";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "@/redux/features/cart-slice";
 
 const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [activeColor, setActiveColor] = useState("blue");
@@ -19,6 +21,16 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [type, setType] = useState("active");
   const [sim, setSim] = useState("dual");
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch<AppDispatch>();
+  // add to cart
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        ...productDetails,
+        quantity,
+      })
+    );
+  };
 
   const [activeTab, setActiveTab] = useState("tabOne");
 
@@ -523,12 +535,12 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                         </button>
                       </div>
 
-                      <a
-                        href="#"
+                      <button
+                        onClick={handleAddToCart}
                         className="inline-flex font-medium text-white bg-blue py-3 px-7 rounded-md ease-out duration-200 hover:bg-blue-dark"
                       >
-                        Purchase Now
-                      </a>
+                        Add to Cart
+                      </button>
 
                       <a
                         href="#"
