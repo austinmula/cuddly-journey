@@ -13,7 +13,7 @@ import Image from "next/image";
 import { urlFor } from "@/lib/urlFor";
 
 const SingleListItem = ({ item }: { item: Product }) => {
-  const phoneNumber = "254722652000";
+  const phoneNumber = "254732652000";
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
