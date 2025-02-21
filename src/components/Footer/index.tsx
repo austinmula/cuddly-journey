@@ -32,7 +32,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                Some Street, Some Building, x Floor, Nairobi - Kenya
+                Tsavo Road, Nairobi - Kenya
               </li>
 
               <li>
@@ -236,7 +236,7 @@ const Footer = () => {
             </h2>
 
             <ul className="flex flex-col gap-3">
-              <li>
+              {/* <li>
                 <a className="ease-out duration-200 hover:text-blue" href="#">
                   Privacy Policy
                 </a>
@@ -255,7 +255,7 @@ const Footer = () => {
                 <a className="ease-out duration-200 hover:text-blue" href="#">
                   FAQ’s
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a className="ease-out duration-200 hover:text-blue" href="#">
                   Contact

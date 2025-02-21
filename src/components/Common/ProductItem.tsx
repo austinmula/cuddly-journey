@@ -46,7 +46,7 @@ const ProductItem = ({ item }: { item: Product }) => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
-      `Hello, I'm interested in buying ${item.title}.`
+      `Hello, I'm interested in buying ${item.title} of ${item.price} on url https://sharpspaceltd.netlify.app//product-details/${item.slug.current}.`
     );
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -62,7 +62,7 @@ const ProductItem = ({ item }: { item: Product }) => {
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
         {/* <Image src={item.imgs.previews[0]} alt="" width={250} height={250} /> */}
         <Image
-            src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
+          src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
           alt={item.title}
           width={250}
           height={250}
