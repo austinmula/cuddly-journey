@@ -14,16 +14,16 @@ import { Product } from "@/models/product";
 const Home = async () => {
   const categories: Category[] = await getCategories();
   const recentProducts: Product[] = await getRecentProducts();
-  const topPicks:Product[] = await getRandomProducts();
+  const topPicks: Product[] = await getRandomProducts();
 
   console.log(topPicks)
   return (
     <main>
       <Hero />
-      <Categories categories={categories} />
-      <NewArrival recentProducts={recentProducts} />
+      <Categories />
+      <NewArrival />
       <PromoBanner />
-      <BestSeller topPicks={topPicks} />
+      <BestSeller />
       {/* 
       <CounDown />
       <Testimonials /> */}

@@ -13,6 +13,7 @@ import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/lib/urlFor";
 
 const QuickViewModal = () => {
+ 
   const { isModalOpen, closeModal } = useModalContext();
   const { openPreviewModal } = usePreviewSlider();
   const [quantity, setQuantity] = useState(1);

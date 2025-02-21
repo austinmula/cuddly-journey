@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import data from "./categoryData";
 import Image from "next/image";
 
@@ -9,9 +9,29 @@ import "swiper/css/navigation";
 import "swiper/css";
 import SingleItem from "./SingleItem";
 import { Category } from "@/models/category";
+import { getCategories } from "@/lib/api";
 
-const Categories = ({ categories }: { categories: Category[] }) => {
+const Categories = () => {
   const sliderRef = useRef(null);
+
+  useEffect(()=> {
+    getCategoriesData();
+  }, [])
+
+  
+  const getCategoriesData = async () => {
+    try {
+      const data = await getCategories();
+      setCategories(data)
+      
+    } catch (error) {
+      console.log(error)
+    }
+
+
+  }
+
+  const [categories, setCategories] = useState<Category[]>([])
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
