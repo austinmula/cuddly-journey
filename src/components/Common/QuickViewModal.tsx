@@ -10,6 +10,7 @@ import { usePreviewSlider } from "@/app/context/PreviewSliderContext";
 import { resetQuickView } from "@/redux/features/quickView-slice";
 import { updateproductDetails } from "@/redux/features/product-details";
 import { PortableText } from "@portabletext/react";
+import { urlFor } from "@/lib/urlFor";
 
 const QuickViewModal = () => {
   const { isModalOpen, closeModal } = useModalContext();
@@ -94,23 +95,22 @@ const QuickViewModal = () => {
             <div className="max-w-[526px] w-full">
               <div className="flex gap-5">
                 <div className="flex flex-col gap-5">
-                  {/* {product.imgs.thumbnails?.map((img, key) => (
+                  {product.images && product.images.map((img, key) => (
                     <button
                       onClick={() => setActivePreview(key)}
                       key={key}
-                      className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${
-                        activePreview === key && "border-2 border-blue"
-                      }`}
+                      className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${activePreview === key && "border-2 border-blue"
+                        }`}
                     >
                       <Image
-                        src={img || ""}
+                        src={urlFor(img).toString()}
                         alt="thumbnail"
                         width={61}
                         height={61}
                         className="aspect-square"
                       />
                     </button>
-                  ))} */}
+                  ))}
                 </div>
 
                 <div className="relative z-1 overflow-hidden flex items-center justify-center w-full sm:min-h-[508px] bg-gray-1 rounded-lg border border-gray-3">
@@ -136,9 +136,16 @@ const QuickViewModal = () => {
                         />
                       </svg>
                     </button>
-                    {/* 
-                    <Image
-                      src={product?.imgs?.previews?.[activePreview]}
+
+                    {/* <Image
+                      src={product.images ? urlFor(product.images[activePreview]).toString() : "/images/quickview/quickview-big-05.png"}
+                      alt="products-details"
+                      width={400}
+                      height={400}
+                    /> */}
+
+                    {/* <Image
+                      src={product.images ? urlFor(product.images[activePreview]).toString() : "/images/quickview/quickview-big-07.png"}
                       alt="products-details"
                       width={400}
                       height={400}
