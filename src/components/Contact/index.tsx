@@ -72,7 +72,7 @@ const Contact = () => {
                         fill="#273057"
                       />
                     </svg>
-                    Phone: +254 722 652 000
+                    Phone: +254 732 652 000
                   </p>
 
                   <p className="flex gap-4">

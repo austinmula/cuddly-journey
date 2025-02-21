@@ -13,7 +13,7 @@ const OrderSummary = () => {
   const handleCheckout = () => {
     if (cartItems.length === 0) return;
 
-    const phoneNumber = "254722652000"; 
+    const phoneNumber = "254732652000"; 
 
     let message = `🛒 *Order Summary*%0A%0A`;
     cartItems.forEach((item, index) => {

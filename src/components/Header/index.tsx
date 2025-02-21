@@ -21,7 +21,7 @@ const Header = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!searchQuery.trim()) return;
 
     const params = new URLSearchParams(searchParams.toString());
@@ -168,7 +168,7 @@ const Header = () => {
                   24/7 SUPPORT
                 </span>
                 <p className="font-medium text-custom-sm text-dark">
-                  +254 722 652 000
+                  +254 732 652 000
                 </p>
               </div>
             </div>

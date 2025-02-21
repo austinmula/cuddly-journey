@@ -12,7 +12,7 @@ import { addItemToWishlist } from "@/redux/features/wishlist-slice";
 import { urlFor } from "@/lib/urlFor";
 
 const SingleItem = ({ item }: { item: Product }) => {
-  const phoneNumber = "254722652000";
+  const phoneNumber = "254732652000";
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
