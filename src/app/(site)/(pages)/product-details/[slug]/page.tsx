@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { getProductBySlug } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Shop Details Page | SharpSpaceLtd Nextjs E-commerce template",
+  title: "Shop Details Page | SharpSpaceLtd Power Up Your Tech",
   description: "This is Shop Details Page for SharpSpaceLtd Template",
   // other metadata
 };
