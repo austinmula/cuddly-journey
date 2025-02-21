@@ -145,11 +145,17 @@ export const getProductById = async (id: string): Promise<Product | null> => {
   return product;
 };
 
-export const getProductsByFilters = async (categoryId?: string, minPrice?: number, maxPrice?: number): Promise<Product[]> => {
+export const getProductsByFilters = async (
+  categoryId?: string,
+  minPrice?: number,
+  maxPrice?: number,
+  searchTerm?: string
+): Promise<Product[]> => {
   const query = `*[_type == "product"
     ${categoryId ? `&& category._ref == $categoryId` : ""}
     ${minPrice ? `&& price >= $minPrice` : ""}
     ${maxPrice ? `&& price <= $maxPrice` : ""}
+    ${searchTerm ? `&& (title match $searchTerm + "*" || description match $searchTerm + "*")` : ""}
   ] | order(createdAt desc) {
     _id,
     title,
@@ -177,13 +183,15 @@ export const getProductsByFilters = async (categoryId?: string, minPrice?: numbe
 
   const params: any = {};
   if (categoryId) params.categoryId = categoryId;
-  if (minPrice) params.minPrice = minPrice;
-  if (maxPrice) params.maxPrice = maxPrice;
+  if (minPrice !== undefined) params.minPrice = minPrice;
+  if (maxPrice !== undefined) params.maxPrice = maxPrice;
+  if (searchTerm) params.searchTerm = searchTerm;
 
-  const products: Product[] =  await sanityClient.fetch(query, params, {cache: "no-cache"});
+  const products: Product[] = await sanityClient.fetch(query, params, { cache: "no-cache" });
 
   return products;
 };
+
 
 export const getProductsByCategory = async (categoryId?: string): Promise<Product[]> => {
   const query = `*[_type == "product" ${categoryId ? `&& category._ref == $categoryId` : ""}] | order(createdAt desc) {

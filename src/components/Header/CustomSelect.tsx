@@ -40,7 +40,7 @@ const CustomSelect = ({ options }) => {
       >
         {selectedOption.label}
       </div>
-      <div className={`select-items ${isOpen ? "" : "select-hide"}`}>
+      {/* <div className={`select-items ${isOpen ? "" : "select-hide"}`}>
         {options.slice(1, -1).map((option, index) => (
           <div
             key={index}
@@ -52,7 +52,7 @@ const CustomSelect = ({ options }) => {
             {option.label}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

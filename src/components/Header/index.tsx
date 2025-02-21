@@ -9,13 +9,27 @@ import { useSelector } from "react-redux";
 import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
   const { openCartModal } = useCartModalContext();
+  const router = useRouter()
+  const searchParams = useSearchParams();
 
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("search", searchQuery);
+
+    console.log("Navigating to:", `/shop?${params.toString()}`);
+
+    router.push(`/shop?${params.toString()}`);
+  }
+ 
   const product = useAppSelector((state) => state.cartReducer.items);
   const totalPrice = useSelector(selectTotalPrice);
 
@@ -37,14 +51,14 @@ const Header = () => {
   });
 
   const options = [
-    { label: "All Categories", value: "0" },
-    { label: "Desktop", value: "1" },
-    { label: "Laptop", value: "2" },
-    { label: "Monitor", value: "3" },
-    { label: "Phone", value: "4" },
-    { label: "Watch", value: "5" },
-    { label: "Mouse", value: "6" },
-    { label: "Tablet", value: "7" },
+    { label: "Search", value: "0" },
+    // { label: "Desktop", value: "1" },
+    // { label: "Laptop", value: "2" },
+    // { label: "Monitor", value: "3" },
+    // { label: "Phone", value: "4" },
+    // { label: "Watch", value: "5" },
+    // { label: "Mouse", value: "6" },
+    // { label: "Tablet", value: "7" },
   ];
 
   return (
@@ -95,6 +109,7 @@ const Header = () => {
 
                     <button
                       id="search-btn"
+                      onClick={handleSearch}
                       aria-label="Search"
                       className="flex items-center justify-center absolute right-3 top-1/2 -translate-y-1/2 ease-in duration-200 hover:text-blue"
                     >

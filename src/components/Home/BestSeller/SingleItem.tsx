@@ -87,7 +87,7 @@ const SingleItem = ({ item }: { item: Product }) => {
 
           <span className="flex items-center justify-center gap-2 font-medium text-lg">
             {/* <span className="text-dark">${item.discountedPrice}</span> */}
-            <span className="text-dark-4 line-through">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+            <span className="text-dark-4">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
           </span>
         </div>
 

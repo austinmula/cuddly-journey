@@ -26,7 +26,8 @@ const ShopWithSidebar = () => {
   // Get filters from URL
   const selectedCategory = searchParams.get("category") || null;
   const minPrice = searchParams.get("minPrice") ? Number(searchParams.get("minPrice")) : 0;
-  const maxPrice = searchParams.get("maxPrice") ? Number(searchParams.get("maxPrice")) : 500000; // Adjust as needed
+  const maxPrice = searchParams.get("maxPrice") ? Number(searchParams.get("maxPrice")) : 500000; 
+  const searchTerm = searchParams.get("search");
 
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -44,12 +45,12 @@ const ShopWithSidebar = () => {
         setCategories([])
       }
 
-      const fetchedProducts = await getProductsByFilters(selectedCategory || undefined, priceRange[0], priceRange[1]);
+      const fetchedProducts = await getProductsByFilters(selectedCategory || undefined, priceRange[0], priceRange[1], searchTerm);
       setProducts(fetchedProducts);
     };
 
     fetchData();
-  }, [selectedCategory, priceRange]);
+  }, [selectedCategory, priceRange, searchTerm]);
 
   // Update URL when filters change
   const updateFilters = (categoryId: string | null, min: number, max: number) => {
@@ -222,7 +223,7 @@ const ShopWithSidebar = () => {
               <div className="rounded-lg bg-white shadow-1 pl-3 pr-2.5 py-2.5 mb-6">
                 <div className="flex items-center justify-between">
                   {/* <!-- top bar left --> */}
-                  <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex flex-wrap invisible items-center gap-4">
                     <CustomSelect options={options} />
 
                     <p>
@@ -328,7 +329,7 @@ const ShopWithSidebar = () => {
               {/* <!-- Products Grid Tab Content End --> */}
 
               {/* <!-- Products Pagination Start --> */}
-              <div className="flex justify-center mt-15">
+              {/* <div className="flex justify-center mt-15">
                 <div className="bg-white shadow-1 rounded-md p-2">
                   <ul className="flex items-center">
                     <li>
@@ -442,7 +443,7 @@ const ShopWithSidebar = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
               {/* <!-- Products Pagination End --> */}
             </div>
             {/* // <!-- Content End --> */}
