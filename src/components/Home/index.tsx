@@ -27,7 +27,7 @@ const Home = async () => {
       {/* 
       <CounDown />
       <Testimonials /> */}
-      <Newsletter />
+      {/* <Newsletter /> */}
     </main>
   );
 };
