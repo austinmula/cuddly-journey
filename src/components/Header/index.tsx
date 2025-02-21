@@ -19,7 +19,9 @@ const Header = () => {
   const router = useRouter()
   const searchParams = useSearchParams();
 
-  const handleSearch = () => {
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    
     if (!searchQuery.trim()) return;
 
     const params = new URLSearchParams(searchParams.toString());
