@@ -187,7 +187,7 @@ const Billing = () => {
                       width="16"
                       height="16"
                       rx="4"
-                      fill="#3C50E0"
+                      fill="#273057"
                     />
                     <path
                       fillRule="evenodd"
