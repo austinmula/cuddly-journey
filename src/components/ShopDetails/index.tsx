@@ -143,7 +143,11 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                       </button> */}
 
                       <Image
-                        src={product.images ? urlFor(product.images[previewImg]).toString() : "/images/quickview/quickview-big-07.png"}
+                        src={
+                          product.images
+                            ? urlFor(product.images[previewImg]).toString()
+                            : "/images/quickview/quickview-big-07.png"
+                        }
                         alt="products-details"
                         width={400}
                         height={400}
@@ -153,23 +157,25 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
 
                   {/* ?  &apos;border-blue &apos; :  &apos;border-transparent&apos; */}
                   <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                    {product.images && product.images.map((item, key) => (
-                      <button
-                        onClick={() => setPreviewImg(key)}
-                        key={key}
-                        className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${key === previewImg
-                          ? "border-blue"
-                          : "border-transparent"
+                    {product.images &&
+                      product.images.map((item, key) => (
+                        <button
+                          onClick={() => setPreviewImg(key)}
+                          key={key}
+                          className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${
+                            key === previewImg
+                              ? "border-blue"
+                              : "border-transparent"
                           }`}
-                      >
-                        <Image
-                          width={50}
-                          height={50}
-                          src={urlFor(item).toString()}
-                          alt="thumbnail"
-                        />
-                      </button>
-                    ))}
+                        >
+                          <Image
+                            width={50}
+                            height={50}
+                            src={urlFor(item).toString()}
+                            alt="thumbnail"
+                          />
+                        </button>
+                      ))}
                   </div>
                 </div>
 
@@ -182,7 +188,13 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                   </div>
 
                   <h3 className="font-thin text-custom-1 mb-4.5">
-                    <span className="text-3xl text-dark">
+                    <span className="text-2xl font-medium text-dark-2">
+                      Kshs.{" "}
+                      {product.discountedPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    </span>
+                    <span className="text-2xl text-dark-2 line-through ml-2">
                       Kshs.{" "}
                       {product.price
                         .toString()
@@ -577,10 +589,11 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                   <button
                     key={key}
                     onClick={() => setActiveTab(item.id)}
-                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${activeTab === item.id
-                      ? "text-blue before:w-full"
-                      : "text-dark before:w-0"
-                      }`}
+                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${
+                      activeTab === item.id
+                        ? "text-blue before:w-full"
+                        : "text-dark before:w-0"
+                    }`}
                   >
                     {item.title}
                   </button>
@@ -592,8 +605,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content one start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabOne" ? "flex" : "hidden"
-                    }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
+                    activeTab === "tabOne" ? "flex" : "hidden"
+                  }`}
                 >
                   <div className=" w-full">
                     <h2 className="font-medium text-2xl text-dark mb-7">
@@ -630,8 +644,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content two start --> */}
               <div>
                 <div
-                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${activeTab === "tabTwo" ? "block" : "hidden"
-                    }`}
+                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${
+                    activeTab === "tabTwo" ? "block" : "hidden"
+                  }`}
                 >
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
@@ -772,8 +787,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
               {/* <!-- tab content three start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabThree" ? "flex" : "hidden"
-                    }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
+                    activeTab === "tabThree" ? "flex" : "hidden"
+                  }`}
                 >
                   <div className="max-w-[570px] w-full">
                     <h2 className="font-medium text-2xl text-dark mb-9">
@@ -1292,7 +1308,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
             </div>
           </section>
 
-          <RecentlyViewdItems relatedProducts={product.relatedProducts} />
+          <RecentlyViewdItems
+            relatedProducts={productDetails.relatedProducts}
+          />
 
           {/* <Newsletter /> */}
         </>

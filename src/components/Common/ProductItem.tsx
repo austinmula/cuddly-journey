@@ -62,7 +62,11 @@ const ProductItem = ({ item }: { item: Product }) => {
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
         {/* <Image src={item.imgs.previews[0]} alt="" width={250} height={250} /> */}
         <Image
-          src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
+          src={
+            item.images
+              ? urlFor(item.images[0]).toString()
+              : "/images/quickview/quickview-big-05.png"
+          }
           alt={item.title}
           width={250}
           height={250}
@@ -179,10 +183,15 @@ const ProductItem = ({ item }: { item: Product }) => {
         </Link>
       </h3>
 
-      <span className="flex items-center gap-2 font-medium text-lg">
-        {/* <span className="text-dark">${item.discountedPrice}</span> */}
-        <span className="text-dark-4 ">
+      <span className="flex items-center gap-2 font-medium text-base">
+        <span className="text-dark-2 line-through">
           KShs.{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </span>
+        <span className="text-dark-4">
+          KShs.
+          {item.discountedPrice
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </span>
       </span>
 

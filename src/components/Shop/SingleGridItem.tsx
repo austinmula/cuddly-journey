@@ -54,7 +54,16 @@ const SingleGridItem = ({ item }: { item: Product }) => {
   return (
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[270px] mb-4">
-        <Image   src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"} alt="" width={250} height={250} />
+        <Image
+          src={
+            item.images
+              ? urlFor(item.images[0]).toString()
+              : "/images/quickview/quickview-big-05.png"
+          }
+          alt=""
+          width={250}
+          height={250}
+        />
 
         <div className="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
           <button
@@ -159,12 +168,22 @@ const SingleGridItem = ({ item }: { item: Product }) => {
       </div> */}
 
       <h3 className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
-        <Link href={`/product-details/${item.slug.current}`}> {item.title} </Link>
+        <Link href={`/product-details/${item.slug.current}`}>
+          {" "}
+          {item.title}{" "}
+        </Link>
       </h3>
 
-      <span className="flex items-center gap-2 font-medium text-lg">
-        <span className="text-dark">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-        {/* <span className="text-dark-4 line-through">${item.price}</span> */}
+      <span className="flex items-center gap-2 font-medium text-base">
+        <span className="text-dark-2 line-through">
+          KShs.{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </span>
+        <span className="text-dark-4">
+          KShs.
+          {item.discountedPrice
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </span>
       </span>
       <button
         onClick={handleWhatsAppClick}

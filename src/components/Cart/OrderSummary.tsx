@@ -6,14 +6,13 @@ import { useSelector } from "react-redux";
 const BASE_URL = "https://sharpspaceltd.netlify.app"; // Change this to your actual domain
 
 const OrderSummary = () => {
-  
   const cartItems = useAppSelector((state) => state.cartReducer.items);
   const totalPrice = useSelector(selectTotalPrice);
 
   const handleCheckout = () => {
     if (cartItems.length === 0) return;
 
-    const phoneNumber = "254732652000"; 
+    const phoneNumber = "254732652000";
 
     let message = `🛒 *Order Summary*%0A%0A`;
     cartItems.forEach((item, index) => {
@@ -54,7 +53,7 @@ const OrderSummary = () => {
             >
               <p className="text-dark">{item.title}</p>
               <p className="text-dark text-right">
-                Kshs. {(item.price * item.quantity).toLocaleString()}
+                Kshs. {(item.discountedPrice * item.quantity).toLocaleString()}
               </p>
             </div>
           ))}
