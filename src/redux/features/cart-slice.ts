@@ -5,18 +5,6 @@ type InitialState = {
   items: CartItem[];
 };
 
-// type CartItem = {
-//   id: number;
-//   title: string;
-//   price: number;
-//   discountedPrice: number;
-//   quantity: number;
-//   imgs?: {
-//     thumbnails: string[];
-//     previews: string[];
-//   };
-// };
-
 type CartItem = {
   _id: string;
   title: string;
@@ -25,6 +13,7 @@ type CartItem = {
   };
   brand: string;
   price: number;
+  discountedPrice: number;
   stock: number;
   quantity: number;
   status?: string;
@@ -37,7 +26,7 @@ type CartItem = {
   };
   images: Image[];
   summary: any[];
-  description: any[]; // Sanity rich text format (Portable Text)
+  description: any[];
   // specifications: Specifications;
   variants: Variant[];
   reviews: Review[];
@@ -105,6 +94,7 @@ export const cart = createSlice({
           slug: action.payload.slug,
           brand: action.payload.brand,
           price,
+          discountedPrice: action.payload.discountedPrice,
           stock: action.payload.stock,
           quantity,
           status,
@@ -145,7 +135,7 @@ export const selectCartItems = (state: RootState) => state.cartReducer.items;
 
 export const selectTotalPrice = createSelector([selectCartItems], (items) => {
   return items.reduce((total, item) => {
-    return total + item.price * item.quantity;
+    return total + item.discountedPrice * item.quantity;
   }, 0);
 });
 

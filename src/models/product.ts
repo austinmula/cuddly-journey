@@ -6,6 +6,7 @@ export interface Product {
   };
   brand: string;
   price: number;
+  discountedPrice: number;
   stock: number;
   category: {
     _id: string;
