@@ -29,6 +29,12 @@ export default {
       validation: (Rule) => Rule.required().min(0),
     },
     {
+      name: "discountedPrice",
+      title: "Discounted Price",
+      type: "number",
+      validation: (Rule) => Rule.required().min(0),
+    },
+    {
       name: "stock",
       title: "Stock",
       type: "number",

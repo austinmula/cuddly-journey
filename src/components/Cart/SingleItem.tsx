@@ -26,7 +26,9 @@ const SingleItem = ({ item }) => {
   const handleDecreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      dispatch(updateCartItemQuantity({ id: item._id, quantity: quantity - 1 }));
+      dispatch(
+        updateCartItemQuantity({ id: item._id, quantity: quantity - 1 })
+      );
     } else {
       return;
     }
@@ -41,7 +43,11 @@ const SingleItem = ({ item }) => {
               <Image
                 width={200}
                 height={200}
-                src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
+                src={
+                  item.images
+                    ? urlFor(item.images[0]).toString()
+                    : "/images/quickview/quickview-big-05.png"
+                }
                 alt="product"
               />
             </div>
@@ -56,7 +62,12 @@ const SingleItem = ({ item }) => {
       </div>
 
       <div className="min-w-[180px]">
-        <p className="text-dark">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+        <p className="text-dark">
+          Kshs.{" "}
+          {item.discountedPrice
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </p>
       </div>
 
       <div className="min-w-[275px]">
@@ -112,7 +123,12 @@ const SingleItem = ({ item }) => {
       </div>
 
       <div className="min-w-[200px]">
-        <p className="text-dark">Kshs. {(item.price * quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+        <p className="text-dark">
+          Kshs.{" "}
+          {(item.discountedPrice * quantity)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </p>
       </div>
 
       <div className="min-w-[50px] flex justify-end">

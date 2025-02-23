@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import Link from "next/link";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const ProductItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
@@ -61,8 +62,20 @@ const ProductItem = ({ item }: { item: Product }) => {
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
         {/* <Image src={item.imgs.previews[0]} alt="" width={250} height={250} /> */}
+        <div>
+          <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute top-0 left-0">
+            <span className="uppercase text-xs">sale:</span>{" "}
+            {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+            <span> off</span>
+          </span>
+        </div>
+
         <Image
-          src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-05.png"}
+          src={
+            item.images
+              ? urlFor(item.images[0]).toString()
+              : "/images/quickview/quickview-big-05.png"
+          }
           alt={item.title}
           width={250}
           height={250}
@@ -179,10 +192,15 @@ const ProductItem = ({ item }: { item: Product }) => {
         </Link>
       </h3>
 
-      <span className="flex items-center gap-2 font-medium text-lg">
-        {/* <span className="text-dark">${item.discountedPrice}</span> */}
-        <span className="text-dark-4 ">
+      <span className="flex items-center gap-2 font-medium text-base">
+        <span className="text-dark-2 line-through">
           KShs.{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </span>
+        <span className="text-dark-4">
+          KShs.
+          {item.discountedPrice
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </span>
       </span>
 

@@ -9,6 +9,7 @@ type Product = {
   };
   brand: string;
   price: number;
+  discountedPrice: number;
   stock: number;
   quantity: number;
   status?: string;
@@ -20,7 +21,7 @@ type Product = {
     };
   };
   images: Image[];
-  summary: any[]; 
+  summary: any[];
   description: any[]; // Sanity rich text format (Portable Text)
   // specifications: Specifications;
   variants: Variant[];
@@ -79,6 +80,7 @@ const initialState = {
     slug: { current: "" },
     brand: "",
     price: 0,
+    discountedPrice: 0,
     stock: 0,
     quantity: 0,
     category: { _id: "", title: "", slug: { current: "" } },
