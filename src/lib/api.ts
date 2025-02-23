@@ -105,6 +105,7 @@ export const getProductBySlug = async (
       title,
       slug,
       price,
+      discountedPrice,
       images,
     },
     createdAt
@@ -139,6 +140,7 @@ export const getProductById = async (id: string): Promise<Product | null> => {
       title,
       slug,
       price,
+      discountedPrice,
       images
     },
     createdAt

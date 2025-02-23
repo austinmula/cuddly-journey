@@ -18,7 +18,7 @@ export interface Product {
   images: Image[];
   summary: any[]; // Sanity rich text format (Portable Text)
   description: any[]; // Sanity rich text format (Portable Text)
-//   specifications: Specifications;
+  //   specifications: Specifications;
   variants: Variant[];
   reviews: Review[];
   relatedProducts: RelatedProduct[];
@@ -64,6 +64,7 @@ export interface RelatedProduct {
   };
   brand: string;
   price: number;
+  discountedPrice: number;
   stock: number;
   category: {
     _id: string;
