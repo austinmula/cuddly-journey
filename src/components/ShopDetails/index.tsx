@@ -95,11 +95,11 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
     (state) => state.productDetailsReducer.value
   );
 
-  const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
+  // const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
 
-  useEffect(() => {
-    localStorage.setItem("productDetails", JSON.stringify(productDetails));
-  }, [product]);
+  // useEffect(() => {
+  //   localStorage.setItem("productDetails", JSON.stringify(productDetails));
+  // }, [product]);
 
   // pass the product here when you get the real data.
   const handlePreviewSlider = () => {
@@ -110,7 +110,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
     <>
       <Breadcrumb title={"Product Details"} pages={["product details"]} />
 
-      {product.title === "" ? (
+      {productDetails.title === "" ? (
         "Please add product"
       ) : (
         <>
@@ -144,8 +144,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
 
                       <Image
                         src={
-                          product.images
-                            ? urlFor(product.images[previewImg]).toString()
+                          productDetails.images
+                            ? urlFor(productDetails.images[previewImg]).toString()
                             : "/images/quickview/quickview-big-07.png"
                         }
                         alt="products-details"
@@ -157,8 +157,8 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
 
                   {/* ?  &apos;border-blue &apos; :  &apos;border-transparent&apos; */}
                   <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                    {product.images &&
-                      product.images.map((item, key) => (
+                    {productDetails.images &&
+                      productDetails.images.map((item, key) => (
                         <button
                           onClick={() => setPreviewImg(key)}
                           key={key}
@@ -183,20 +183,20 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                 <div className="max-w-[539px] w-full">
                   <div className="flex items-center justify-between mb-3">
                     <h2 className="font-semibold text-xl sm:text-2xl xl:text-custom-3 text-dark">
-                      {product.title}
+                      {productDetails.title}
                     </h2>
                   </div>
 
                   <h3 className="font-thin text-custom-1 mb-4.5">
                     <span className="text-2xl font-medium text-dark-2">
                       Kshs.{" "}
-                      {product.discountedPrice
+                      {productDetails.discountedPrice
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
                     <span className="text-2xl text-dark-2 line-through ml-2">
                       Kshs.{" "}
-                      {product.price
+                      {productDetails.price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
@@ -292,7 +292,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                         <h3 className="font-medium my-4">Product Summary:</h3>
                       </div>
                       <div className="prose mb-5">
-                        <PortableText value={product.summary} />
+                        <PortableText value={productDetails.summary} />
                       </div>
                       {/* 
                       <div className="flex items-center gap-4">
@@ -615,7 +615,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                     </h2>
 
                     <div className="prose mb-5">
-                      <PortableText value={product.description} />
+                      <PortableText value={productDetails.description} />
                     </div>
                   </div>
 
