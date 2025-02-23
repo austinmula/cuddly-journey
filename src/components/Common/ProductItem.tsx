@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import Link from "next/link";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const ProductItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
@@ -61,6 +62,14 @@ const ProductItem = ({ item }: { item: Product }) => {
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
         {/* <Image src={item.imgs.previews[0]} alt="" width={250} height={250} /> */}
+        <div>
+          <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute top-0 left-0">
+            <span className="uppercase text-xs">sale:</span>{" "}
+            {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+            <span> off</span>
+          </span>
+        </div>
+
         <Image
           src={
             item.images

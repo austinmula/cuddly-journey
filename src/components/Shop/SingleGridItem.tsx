@@ -10,6 +10,7 @@ import { AppDispatch } from "@/redux/store";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const SingleGridItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
@@ -54,6 +55,13 @@ const SingleGridItem = ({ item }: { item: Product }) => {
   return (
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[270px] mb-4">
+        <div>
+          <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute top-0 left-0">
+            <span className="uppercase text-xs">sale:</span>{" "}
+            {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+            <span> off</span>
+          </span>
+        </div>
         <Image
           src={
             item.images

@@ -11,9 +11,9 @@ import { resetQuickView } from "@/redux/features/quickView-slice";
 import { updateproductDetails } from "@/redux/features/product-details";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const QuickViewModal = () => {
- 
   const { isModalOpen, closeModal } = useModalContext();
   const { openPreviewModal } = usePreviewSlider();
   const [quantity, setQuantity] = useState(1);
@@ -65,8 +65,9 @@ const QuickViewModal = () => {
 
   return (
     <div
-      className={`${isModalOpen ? "z-99999" : "hidden"
-        } fixed top-0 left-0 overflow-y-auto no-scrollbar w-full h-screen sm:py-20 xl:py-25 2xl:py-[230px] bg-dark/70 sm:px-8 px-4 py-5`}
+      className={`${
+        isModalOpen ? "z-99999" : "hidden"
+      } fixed top-0 left-0 overflow-y-auto no-scrollbar w-full h-screen sm:py-20 xl:py-25 2xl:py-[230px] bg-dark/70 sm:px-8 px-4 py-5`}
     >
       <div className="flex items-center justify-center ">
         <div className="w-full max-w-[1100px] rounded-xl shadow-3 bg-white p-7.5 relative modal-content">
@@ -96,22 +97,24 @@ const QuickViewModal = () => {
             <div className="max-w-[526px] w-full">
               <div className="flex gap-5">
                 <div className="flex flex-col gap-5">
-                  {product.images && product.images.map((img, key) => (
-                    <button
-                      onClick={() => setActivePreview(key)}
-                      key={key}
-                      className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${activePreview === key && "border-2 border-blue"
+                  {product.images &&
+                    product.images.map((img, key) => (
+                      <button
+                        onClick={() => setActivePreview(key)}
+                        key={key}
+                        className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${
+                          activePreview === key && "border-2 border-blue"
                         }`}
-                    >
-                      <Image
-                        src={urlFor(img).toString()}
-                        alt="thumbnail"
-                        width={61}
-                        height={61}
-                        className="aspect-square"
-                      />
-                    </button>
-                  ))}
+                      >
+                        <Image
+                          src={urlFor(img).toString()}
+                          alt="thumbnail"
+                          width={61}
+                          height={61}
+                          className="aspect-square"
+                        />
+                      </button>
+                    ))}
                 </div>
 
                 <div className="relative z-1 overflow-hidden flex items-center justify-center w-full sm:min-h-[508px] bg-gray-1 rounded-lg border border-gray-3">
@@ -157,9 +160,14 @@ const QuickViewModal = () => {
             </div>
 
             <div className="max-w-[445px] w-full">
-              {/* <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-6.5">
-                SALE 20% OFF
-              </span> */}
+              <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-6.5">
+                SALE{" "}
+                {calculateDiscountPercentage(
+                  product.price,
+                  product.discountedPrice
+                )}{" "}
+                % OFF
+              </span>
 
               <h3 className="font-semibold text-xl xl:text-heading-5 text-dark mb-4">
                 {product.title}
@@ -322,11 +330,17 @@ const QuickViewModal = () => {
 
                   <span className="flex items-center gap-2">
                     <span className="font-semibold text-dark text-xl xl:text-heading-4">
-                      Kshs. {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      Kshs.{" "}
+                      {product.discountedPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
-                    {/* <span className="font-medium text-dark-4 text-lg xl:text-2xl line-through">
-                      Kshs. {product.price}
-                    </span> */}
+                    <span className="font-medium text-dark-4 text-lg xl:text-2xl line-through">
+                      Kshs.{" "}
+                      {product.price
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    </span>
                   </span>
                 </div>
 

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { addItemToWishlist } from "@/redux/features/wishlist-slice";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const SingleItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
@@ -53,6 +54,13 @@ const SingleItem = ({ item }: { item: Product }) => {
   return (
     <div className="group">
       <div className="relative overflow-hidden rounded-lg bg-[#F6F7FB] min-h-[403px]">
+        <div>
+          <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute bottom-0 right-0">
+            <span className="uppercase text-xs">sale:</span>{" "}
+            {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+            <span> off</span>
+          </span>
+        </div>
         <div className="text-center px-4 py-7.5">
           <div className="flex items-center justify-center gap-2.5 mb-2">
             {/* <div className="flex items-center gap-1">

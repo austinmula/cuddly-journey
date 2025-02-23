@@ -11,6 +11,7 @@ import { AppDispatch } from "@/redux/store";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const SingleListItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
@@ -55,6 +56,13 @@ const SingleListItem = ({ item }: { item: Product }) => {
     <div className="group rounded-lg bg-white shadow-1">
       <div className="flex">
         <div className="shadow-list relative overflow-hidden flex items-center justify-center max-w-[270px] w-full sm:min-h-[270px] p-4">
+          <div>
+            <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute top-0 left-0">
+              <span className="uppercase text-xs">sale:</span>{" "}
+              {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+              <span> off</span>
+            </span>
+          </div>
           <Image
             src={
               item.images

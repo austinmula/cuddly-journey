@@ -145,7 +145,9 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                       <Image
                         src={
                           productDetails.images
-                            ? urlFor(productDetails.images[previewImg]).toString()
+                            ? urlFor(
+                                productDetails.images[previewImg]
+                              ).toString()
                             : "/images/quickview/quickview-big-07.png"
                         }
                         alt="products-details"
