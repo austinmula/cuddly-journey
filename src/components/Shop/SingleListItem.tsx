@@ -45,7 +45,7 @@ const SingleListItem = ({ item }: { item: Product }) => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
-      `Hello, I'm interested in buying ${item.title} of ${item.price} on url https://sharpspaceltd.netlify.app/product-details/${item.slug.current}.`
+      `Hello, I'm interested in buying ${item.title} of ${item.price} on url https://sharpspaceltd.com/product-details/${item.slug.current}.`
     );
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
