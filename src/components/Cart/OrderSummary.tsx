@@ -3,7 +3,7 @@ import { useAppSelector } from "@/redux/store";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const BASE_URL = "https://sharpspaceltd.netlify.app"; // Change this to your actual domain
+const BASE_URL = "https://sharpspaceltd.com"; // Change this to your actual domain
 
 const OrderSummary = () => {
   
