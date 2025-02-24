@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { addItemToWishlist } from "@/redux/features/wishlist-slice";
 import { urlFor } from "@/lib/urlFor";
+import { calculateDiscountPercentage } from "@/lib/discount";
 
 const SingleItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
@@ -53,6 +54,13 @@ const SingleItem = ({ item }: { item: Product }) => {
   return (
     <div className="group">
       <div className="relative overflow-hidden rounded-lg bg-[#F6F7FB] min-h-[403px]">
+        <div>
+          <span className="font-medium text-xs text-white bg-blue py-1 px-2 rounded-tl-[5px] rounded-br-[5px] absolute bottom-0 right-0">
+            <span className="uppercase text-xs">sale:</span>{" "}
+            {calculateDiscountPercentage(item.price, item.discountedPrice)} %
+            <span> off</span>
+          </span>
+        </div>
         <div className="text-center px-4 py-7.5">
           <div className="flex items-center justify-center gap-2.5 mb-2">
             {/* <div className="flex items-center gap-1">
@@ -92,17 +100,36 @@ const SingleItem = ({ item }: { item: Product }) => {
           </div>
 
           <h3 className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
-            <Link href={`/product-details/${item.slug.current}`}> {item.title} </Link>
+            <Link href={`/product-details/${item.slug.current}`}>
+              {" "}
+              {item.title}{" "}
+            </Link>
           </h3>
 
-          <span className="flex items-center justify-center gap-2 font-medium text-lg">
-            {/* <span className="text-dark">${item.discountedPrice}</span> */}
-            <span className="text-dark-4">Kshs. {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+          <span className="flex items-center justify-center gap-2 font-medium text-base">
+            <span className="text-dark-2 line-through">
+              KShs.{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </span>
+            <span className="text-dark-4">
+              KShs.
+              {item.discountedPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </span>
           </span>
         </div>
 
         <div className="flex justify-center items-center">
-          <Image src={item.images ? urlFor(item.images[0]).toString() : "/images/quickview/quickview-big-07.png"} alt="" width={280} height={280} />
+          <Image
+            src={
+              item.images
+                ? urlFor(item.images[0]).toString()
+                : "/images/quickview/quickview-big-07.png"
+            }
+            alt=""
+            width={280}
+            height={280}
+          />
         </div>
 
         <div className="absolute right-0 bottom-0 translate-x-full u-w-full flex flex-col gap-2 p-5.5 ease-linear duration-300 group-hover:translate-x-0">

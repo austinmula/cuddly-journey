@@ -12,6 +12,7 @@ type WishListItem = {
   };
   brand: string;
   price: number;
+  discountedPrice: number;
   stock: number;
   quantity: number;
   status?: string;
@@ -92,6 +93,7 @@ export const wishlist = createSlice({
           slug: action.payload.slug,
           brand: action.payload.brand,
           price,
+          discountedPrice: action.payload.discountedPrice,
           stock: action.payload.stock,
           quantity,
           status,

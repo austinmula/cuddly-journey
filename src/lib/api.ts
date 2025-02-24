@@ -24,6 +24,7 @@ export const getProducts = async (): Promise<Product[]> => {
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -54,6 +55,7 @@ export const getRecentProducts = async (): Promise<Product[]> => {
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -86,6 +88,7 @@ export const getProductBySlug = async (
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -102,13 +105,14 @@ export const getProductBySlug = async (
       title,
       slug,
       price,
+      discountedPrice,
       images,
     },
     createdAt
   }`;
 
   const product: Product | null = await sanityClient.fetch(query, { slug });
-  console.log(product)
+  console.log(product);
   return product;
 };
 
@@ -119,6 +123,7 @@ export const getProductById = async (id: string): Promise<Product | null> => {
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -135,13 +140,14 @@ export const getProductById = async (id: string): Promise<Product | null> => {
       title,
       slug,
       price,
+      discountedPrice,
       images
     },
     createdAt
   }`;
 
   const product: Product | null = await sanityClient.fetch(query, { id });
-  console.log(product)
+  // console.log(product);
   return product;
 };
 
@@ -162,6 +168,7 @@ export const getProductsByFilters = async (
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -187,19 +194,23 @@ export const getProductsByFilters = async (
   if (maxPrice !== undefined) params.maxPrice = maxPrice;
   if (searchTerm) params.searchTerm = searchTerm;
 
-  const products: Product[] = await sanityClient.fetch(query, params, { cache: "no-cache" });
+  const products: Product[] = await sanityClient.fetch(query, params, {
+    cache: "no-cache",
+  });
 
   return products;
 };
 
-
-export const getProductsByCategory = async (categoryId?: string): Promise<Product[]> => {
+export const getProductsByCategory = async (
+  categoryId?: string
+): Promise<Product[]> => {
   const query = `*[_type == "product" ${categoryId ? `&& category._ref == $categoryId` : ""}] | order(createdAt desc) {
     _id,
     title,
     slug,
     brand,
     price,
+    discountedPrice,
     stock,
     category->{
       _id,
@@ -219,8 +230,11 @@ export const getProductsByCategory = async (categoryId?: string): Promise<Produc
     createdAt
   }`;
 
-  const products: Product[] = await sanityClient.fetch(query, categoryId ? { categoryId } : {});
-  console.log(products)
+  const products: Product[] = await sanityClient.fetch(
+    query,
+    categoryId ? { categoryId } : {}
+  );
+  console.log(products);
   return products;
 };
 
@@ -230,6 +244,7 @@ export const getRandomProducts = async (): Promise<Product[]> => {
     title,
     slug,
     price,
+    discountedPrice,
     category->{
       _id,
       title
@@ -248,9 +263,6 @@ export const getRandomProducts = async (): Promise<Product[]> => {
     return [];
   }
 };
-
-
-
 
 // export const getGames = async (): Promise<Game[]> => {
 // 	const query = `*[_type == "game"] {
