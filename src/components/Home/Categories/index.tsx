@@ -27,8 +27,6 @@ const Categories = () => {
     } catch (error) {
       console.log(error)
     }
-
-
   }
 
   const [categories, setCategories] = useState<Category[]>([])
