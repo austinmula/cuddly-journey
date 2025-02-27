@@ -16,6 +16,8 @@ import PreviewSliderModal from "@/components/Common/PreviewSlider";
 import ScrollToTop from "@/components/Common/ScrollToTop";
 import PreLoader from "@/components/Common/PreLoader";
 import CategoriesSidebar from "@/components/Common/CategoriesSidebar";
+import { Category } from "@/models/category";
+import { getCategories } from "@/lib/api";
 
 export default function RootLayout({
   children,
@@ -23,6 +25,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState<boolean>(true);
+  const [categories, setCategories] = useState<Category[]>([])
+  useEffect(() => {
+    getCategoriesData();
+  }, [])
+
+
+  const getCategoriesData = async () => {
+    try {
+      const data = await getCategories();
+      setCategories(data)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -40,7 +58,7 @@ export default function RootLayout({
                 <ModalProvider>
                   <PreviewSliderProvider>
                     <Header />
-                    <CategoriesSidebar />
+                    <CategoriesSidebar categories={categories} />
                     {children}
 
                     <QuickViewModal />
