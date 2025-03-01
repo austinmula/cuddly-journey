@@ -19,8 +19,8 @@ const Home = () => {
   // console.log(topPicks)
   return (
     <main>
-      <Hero />
       <Categories />
+      <Hero />
       <NewArrival />
       <PromoBanner />
       <BestSeller />
