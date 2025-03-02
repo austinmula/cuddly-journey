@@ -62,16 +62,18 @@ const SingleGridItem = ({ item }: { item: Product }) => {
             <span> off</span>
           </span>
         </div>
-        <Image
-          src={
-            item.images
-              ? urlFor(item.images[0]).toString()
-              : "/images/quickview/quickview-big-05.png"
-          }
-          alt=""
-          width={250}
-          height={250}
-        />
+        <Link href={`/product-details/${item.slug.current}`}>
+          <Image
+            src={
+              item.images
+                ? urlFor(item.images[0]).toString()
+                : "/images/quickview/quickview-big-05.png"
+            }
+            alt=""
+            width={250}
+            height={250}
+          />
+        </Link>
 
         <div className="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
           <button

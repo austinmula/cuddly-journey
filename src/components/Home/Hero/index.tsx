@@ -6,15 +6,55 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section className="overflow-hidden pb-10 lg:pb-12.5 pt-12.5 bg-[#E5EAF4]">
-      {/* xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-51.5 */}
-      {/* <h1 className="font-semibold text-dark text-xl sm:text-3xl text-center mb-5">
-        <a href="#">Our Services</a>
-      </h1> */}
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-auto gap-2 max-md:p-4 md:gap-4">
+          {/* Laptops Hero Section */}
+          <div className="bg-[#467ebd] md:col-span-3 shadow-3 rounded-lg md:row-span-2 flex items-center justify-center relative overflow-hidden">
+            <div className="relative w-full h-full rounded-[10px] overflow-hidden">
+              <Image
+                src="/images/herro/laptops.webp"
+                alt="hero bg shapes"
+                className="absolute inset-0 object-cover w-full h-full"
+                width={934}
+                height={720}
+              />
+              <div className="absolute inset-0 bg-[black]/50" />
+              <HeroCarousel />
+            </div>
+          </div>
+
+          {/* SmartPhones Section */}
+          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[200px]">
+            <div className="absolute inset-0 overflow-hidden">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-105"
+                style={{ backgroundImage: `url("/images/herro/phones.jpg")` }}
+              ></div>
+            </div>
+            <div className="absolute inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
+              Quality SmartPhones
+            </div>
+          </div>
+
+          {/* Printers Section */}
+          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[200px]">
+            <div className="absolute inset-0 overflow-hidden">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-105"
+                style={{
+                  backgroundImage: `url("/images/herro/printers.webp")`,
+                }}
+              ></div>
+            </div>
+            <div className="absolute inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
+              Printers, Scanners & UPS
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-wrap gap-5">
-          <div className=" w-full">
+          {/* <div className="xl:max-w-[757px] w-full">
             <div className="relative z-1 rounded-[10px] bg-white overflow-hidden">
-              {/* <!-- bg shapes --> */}
               <Image
                 src="/images/hero/hero-bg.png"
                 alt="hero bg shapes"
@@ -25,7 +65,7 @@ const Hero = () => {
 
               <HeroCarousel />
             </div>
-          </div>
+          </div> */}
 
           {/* <div className="xl:max-w-[393px] w-full">
             <div className="flex flex-col sm:flex-row xl:flex-col gap-5">
@@ -53,8 +93,7 @@ const Hero = () => {
 
                   <div>
                     <Image
-                      // src="/images/hero/hero-02.png"
-                      src="https://images.unsplash.com/photo-1620283085068-5aab84e2db8e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src="/images/hero/hero-02.png"
                       alt="mobile image"
                       width={123}
                       height={161}

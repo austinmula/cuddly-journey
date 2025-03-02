@@ -24,8 +24,8 @@ const HeroCarousal = () => {
       className="hero-carousel"
     >
       <SwiperSlide>
-        <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
-          <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
+        <div className="flex relative z-2 items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
+          <div className="py-10 max-w-[494px] sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
             <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
                 30%
@@ -37,11 +37,11 @@ const HeroCarousal = () => {
               </span>
             </div>
 
-            <h1 className="font-semibold text-dark text-xl sm:text-3xl mb-3">
+            <h1 className="font-semibold text-[white] text-xl sm:text-3xl mb-3">
               <a href="#">Brand New Laptops</a>
             </h1>
 
-            <p>
+            <p className="text-[white] font-semibold">
               Explore a curated selection of the latest laptops from top brands.
               Consult with our knowledgeable staff to find the perfect laptop
               that suits your needs.
@@ -55,18 +55,18 @@ const HeroCarousal = () => {
             </a>
           </div>
 
-          <div>
+          {/* <div>
             <Image
               src="/images/products/product-4-bg-1.png"
               alt="laptop"
               width={631}
               height={358}
             />
-          </div>
+          </div> */}
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
+        <div className="flex items-center relative z-2 pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
           <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
             <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
@@ -79,11 +79,11 @@ const HeroCarousal = () => {
               </span>
             </div>
 
-            <h1 className="font-semibold text-dark text-xl sm:text-3xl mb-3">
+            <h1 className="font-semibold text-[white] text-xl sm:text-3xl mb-3">
               <a href="#">Device Maintenance & Repairs</a>
             </h1>
 
-            <p>
+            <p className="text-[white] font-semibold">
               Expert diagnosis and repair services for laptops of all brands.
               Quick turnaround times to minimize downtime and disruption.
             </p>
@@ -95,7 +95,7 @@ const HeroCarousal = () => {
               Create Inquiry
             </a>
           </div>
-
+          {/* 
           <div>
             <Image
               src="/images/products/product-4-bg-2.png"
@@ -103,11 +103,11 @@ const HeroCarousal = () => {
               width={632}
               height={358}
             />
-          </div>
+          </div> */}
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
+        <div className="flex items-center relative z-2 pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
           <div className="max-w-[494px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
             <div className="flex hidden items-center gap-4 mb-7.5 sm:mb-10">
               <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
@@ -120,11 +120,11 @@ const HeroCarousal = () => {
               </span>
             </div>
 
-            <h1 className="font-semibold text-dark text-xl sm:text-3xl mb-3">
+            <h1 className="font-semibold text-[white] text-xl sm:text-3xl mb-3">
               <a href="#">Virus and Malware Protection</a>
             </h1>
 
-            <p>
+            <p className="text-[white] font-semibold">
               Thorough scans and removal of viruses, malware, and other security
               threats. Implementation of security measures to prevent future
               infections
@@ -138,14 +138,14 @@ const HeroCarousal = () => {
             </a>
           </div>
 
-          <div>
+          {/* <div>
             <Image
               src="/images/products/product-4-bg-1.png"
               alt="laptop"
               width={631}
               height={358}
             />
-          </div>
+          </div> */}
         </div>
       </SwiperSlide>
       {/* <SwiperSlide>

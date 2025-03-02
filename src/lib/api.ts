@@ -49,7 +49,7 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export const getRecentProducts = async (): Promise<Product[]> => {
-  const query = `*[_type == "product"] | order(createdAt desc) [0...8] {
+  const query = `*[_type == "product"] | order(_createdAt desc) [0...8] {
     _id,
     title,
     slug,
