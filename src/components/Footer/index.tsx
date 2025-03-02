@@ -1,8 +1,24 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { getCategories } from "@/lib/api";
+import { Category } from "@/models/category";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    getCategoriesData();
+  }, []);
+
+  const getCategoriesData = async () => {
+    try {
+      const data = await getCategories();
+      setCategories(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <footer className="overflow-hidden bg-[#242424]">
@@ -29,7 +45,7 @@ const Footer = () => {
 
           <div className="w-full sm:w-auto">
             <h2 className="mb-7.5 text-custom-1 font-medium text-[white]">
-              Account
+              Most Affordable
             </h2>
 
             <ul className="flex flex-col gap-3.5">
@@ -43,7 +59,18 @@ const Footer = () => {
                   Login / Register
                 </a>
               </li> */}
-              <li>
+              {categories.length &&
+                categories.slice(0, 4).map((category) => (
+                  <li key={category._id}>
+                    <a
+                      className="ease-out duration-200 hover:text-blue"
+                      href={`/shop?category=${category._id}`}
+                    >
+                      {category.title}
+                    </a>
+                  </li>
+                ))}
+              {/* <li>
                 <a className="ease-out duration-200 hover:text-blue" href="#">
                   Cart
                 </a>
@@ -57,7 +84,7 @@ const Footer = () => {
                 <a className="ease-out duration-200 hover:text-blue" href="#">
                   Shop
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -88,13 +115,31 @@ const Footer = () => {
                 </a>
               </li> */}
               <li>
-                <a className="ease-out duration-200 hover:text-blue" href="/shop">
+                <a
+                  className="ease-out duration-200 hover:text-blue"
+                  href="/shop"
+                >
                   Shop
                 </a>
               </li>
 
               <li>
-                <a className="ease-out duration-200 hover:text-blue" href="/contact">
+                <a className="ease-out duration-200 hover:text-blue" href="#">
+                  Popular Items
+                </a>
+              </li>
+
+              <li>
+                <a className="ease-out duration-200 hover:text-blue" href="#">
+                  Recents
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className="ease-out duration-200 hover:text-blue"
+                  href="/contact"
+                >
                   Contact
                 </a>
               </li>
