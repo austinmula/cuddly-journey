@@ -312,7 +312,7 @@ const Header = () => {
         {/* <!-- header top end --> */}
       </div>
 
-      <div className="border-t border-gray-3">
+      <div className="border-t border-gray-3 hidden">
         <div className="max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0">
           <div className="flex items-center justify-between">
             {/* <!--=== Main Nav Start ===--> */}
