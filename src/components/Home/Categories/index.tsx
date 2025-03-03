@@ -48,7 +48,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-51.5">
+    <section className="overflow-hidden xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-32">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 pb-15 border-b border-gray-3">
         <div className="swiper categories-carousel common-carousel">
           {/* <!-- section title --> */}
@@ -144,12 +144,12 @@ const Categories = () => {
                 slidesPerView: 2,
               },
               1000: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 // spaceBetween: 4,
               },
               // when window width is >= 768px
               1200: {
-                slidesPerView: 6,
+                slidesPerView: 9,
               },
             }}
           >
