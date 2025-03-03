@@ -144,12 +144,12 @@ const Categories = () => {
                 slidesPerView: 2,
               },
               1000: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 // spaceBetween: 4,
               },
               // when window width is >= 768px
               1200: {
-                slidesPerView: 6,
+                slidesPerView: 9,
               },
             }}
           >
