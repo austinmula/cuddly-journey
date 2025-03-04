@@ -59,13 +59,13 @@ const Hero = () => {
           <div className="bg-[#467ebd] md:col-span-3 md:row-span-2 shadow-3 rounded-lg flex items-center justify-center relative overflow-hidden">
             <div className="relative w-full h-full rounded-[10px] overflow-hidden">
               <Image
-                src="/images/herro/laptops.webp"
+                src="/images/herro/laptops-1.webp"
                 alt="hero bg shapes"
                 className="absolute inset-0 object-cover w-full h-full"
                 width={934}
                 height={720}
               />
-              <div className="absolute inset-0 bg-[black]/50" />
+              <div className="absolute inset-0 bg-[black]/30" />
               <HeroCarousel />
             </div>
           </div>
