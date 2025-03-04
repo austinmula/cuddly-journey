@@ -48,12 +48,12 @@ const Categories = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-32">
-      <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 pb-15 border-b border-gray-3">
+    <section className="overflow-hidden xl:pb-15 pt-57.5 sm:pt-45 lg:pt-30 xl:pt-32 relative">
+      <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 xl:px-0 pb-15 border-b border-gray-3">
         <div className="swiper categories-carousel common-carousel">
           {/* <!-- section title --> */}
           <div className="mb-10 flex items-center justify-between">
-            <div>
+            <div className="hidden">
               <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
                 <svg
                   width="20"
@@ -96,7 +96,7 @@ const Categories = () => {
               </h2>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 hidden">
               <button onClick={handlePrev} className="swiper-button-prev">
                 <svg
                   className="fill-current"
