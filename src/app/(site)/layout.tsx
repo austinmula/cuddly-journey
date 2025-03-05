@@ -58,7 +58,7 @@ export default function RootLayout({
                 <ModalProvider>
                   <PreviewSliderProvider>
                     <Header />
-                    <CategoriesSidebar categories={categories} />
+                    {/* <CategoriesSidebar categories={categories} /> */}
                     {children}
 
                     <QuickViewModal />
