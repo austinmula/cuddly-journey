@@ -99,7 +99,7 @@ const Footer = () => {
                       fill="#fff"
                     />
                   </svg>
-                  info@sharpspace.com
+                  info@sharpspaceltd.com
                 </a>
               </li>
             </ul>
