@@ -180,7 +180,7 @@ const Header = () => {
                   24/7 SUPPORT
                 </span> */}
                   <p className="font-medium text-custom-sm text-dark">
-                    info@sharpspace.com
+                    info@sharpspaceltd.com
                   </p>
                 </div>
               </div>
