@@ -80,7 +80,10 @@ const Hero = () => {
           </div>
 
           {/* Printers Section (Spans 2 columns, row 2) */}
-          <div className="md:col-start-4 relative z-1 md:col-span-2 md:row-start-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <a
+            href="/shop?category=b3024c53-3201-490a-b867-9126f5cf6441"
+            className="md:col-start-4 relative z-1 md:col-span-2 md:row-start-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+          >
             <div
               className="absolute inset-0 bg-cover bg-center transition-all duration-300 hover:scale-110"
               style={{ backgroundImage: `url("/images/herro/printers.webp")` }}
@@ -89,10 +92,13 @@ const Hero = () => {
             <div className="absolute inset-0 pointer-events-none bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
               Printers & Scanners
             </div>
-          </div>
+          </a>
 
           {/* Extra Sections to Fit 7-Column Layout */}
-          <div className="md:col-start-6 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <a
+            href="/shop?category=29ad7d75-9d76-403f-89a5-e1d944b9a12d"
+            className="md:col-start-6 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+          >
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
               style={{ backgroundImage: `url('/images/herro/desktops.webp')` }}
@@ -101,9 +107,12 @@ const Hero = () => {
             <div className="absolute inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold pointer-events-none">
               Desktops & Monitors
             </div>
-          </div>
+          </a>
 
-          <div className="group md:col-start-6 md:col-span-2 md:row-start-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <a
+            href="/shop?category=9f7c88df-3585-47e0-a168-955029289c11"
+            className="group md:col-start-6 md:col-span-2 md:row-start-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+          >
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
               style={{ backgroundImage: `url('/images/herro/ups.webp')` }}
@@ -113,7 +122,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold pointer-events-none">
               UPS & PowerBackups
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
