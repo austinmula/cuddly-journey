@@ -50,18 +50,15 @@ const Hero = () => {
         </div>
       </div> */}
 
-
-
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 grid-rows-2 gap-2 md:gap-4 max-md:p-4">
-
           {/* Laptops Hero Section (Spans 3 columns, full height) */}
           <div className="bg-[#467ebd] md:col-span-3 md:row-span-2 shadow-3 rounded-lg flex items-center justify-center relative overflow-hidden">
             <div className="relative w-full h-full rounded-[10px] overflow-hidden">
               <Image
-                src="/images/herro/laptops-1.webp"
+                src="/images/herro/laptops-3.jpg"
                 alt="hero bg shapes"
-                className="absolute inset-0 object-cover w-full h-full"
+                className="absolute inset-0 object-contain w-full h-full"
                 width={934}
                 height={720}
               />
@@ -76,8 +73,7 @@ const Hero = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
               style={{ backgroundImage: `url("/images/herro/phones.jpg")` }}
             ></div>
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            </div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
             <div className="absolute pointer-events-none inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
               Quality SmartPhones
             </div>
@@ -89,8 +85,7 @@ const Hero = () => {
               className="absolute inset-0 bg-cover bg-center transition-all duration-300 hover:scale-110"
               style={{ backgroundImage: `url("/images/herro/printers.webp")` }}
             ></div>
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            </div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
             <div className="absolute inset-0 pointer-events-none bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
               Printers & Scanners
             </div>
@@ -102,8 +97,7 @@ const Hero = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
               style={{ backgroundImage: `url('/images/herro/desktops.webp')` }}
             ></div>
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            </div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
             <div className="absolute inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold pointer-events-none">
               Desktops & Monitors
             </div>
@@ -120,10 +114,8 @@ const Hero = () => {
               UPS & PowerBackups
             </div>
           </div>
-
         </div>
       </div>
-
 
       {/* <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-auto gap-2 max-md:p-4 md:gap-4">
@@ -171,7 +163,7 @@ const Hero = () => {
       </div> */}
 
       {/* <!-- Hero features --> */}
-      <HeroFeature />
+      {/* <HeroFeature /> */}
     </section>
   );
 };
