@@ -68,7 +68,7 @@ const Hero = () => {
           </div>
 
           {/* SmartPhones Section (Spans 2 columns, row 1) */}
-          <div className="md:col-start-4 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <div className="md:col-start-4 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]">
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
               style={{ backgroundImage: `url("/images/herro/phones.jpg")` }}
@@ -82,7 +82,7 @@ const Hero = () => {
           {/* Printers Section (Spans 2 columns, row 2) */}
           <a
             href="/shop?category=b3024c53-3201-490a-b867-9126f5cf6441"
-            className="md:col-start-4 relative z-1 md:col-span-2 md:row-start-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+            className="md:col-start-4 relative z-1 md:col-span-2 md:row-start-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]"
           >
             <div
               className="absolute inset-0 bg-cover bg-center transition-all duration-300 hover:scale-110"
@@ -97,7 +97,7 @@ const Hero = () => {
           {/* Extra Sections to Fit 7-Column Layout */}
           <a
             href="/shop?category=29ad7d75-9d76-403f-89a5-e1d944b9a12d"
-            className="md:col-start-6 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+            className="md:col-start-6 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]"
           >
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
@@ -111,7 +111,7 @@ const Hero = () => {
 
           <a
             href="/shop?category=9f7c88df-3585-47e0-a168-955029289c11"
-            className="group md:col-start-6 md:col-span-2 md:row-start-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]"
+            className="group md:col-start-6 md:col-span-2 md:row-start-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]"
           >
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
@@ -143,7 +143,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]">
             <div className="absolute inset-0 overflow-hidden">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
@@ -155,7 +155,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[210px]">
+          <div className="md:col-span-2 shadow-3 relative overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]">
             <div className="absolute inset-0 overflow-hidden">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
