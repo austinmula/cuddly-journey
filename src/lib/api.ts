@@ -49,7 +49,7 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 export const getRecentProducts = async (): Promise<Product[]> => {
-  const query = `*[_type == "product"] | order(_createdAt desc) [0...8] {
+  const query = `*[_type == "product"] | order(_createdAt desc) [0...10] {
     _id,
     title,
     slug,
@@ -257,7 +257,7 @@ export const getRandomProducts = async (): Promise<Product[]> => {
     const products: Product[] = await sanityClient.fetch(query);
 
     // Shuffle the array randomly and pick the first 6 products
-    return products.sort(() => 0.5 - Math.random()).slice(0, 6);
+    return products.sort(() => 0.5 - Math.random()).slice(0, 8);
   } catch (error) {
     console.error("Error fetching random products:", error);
     return [];

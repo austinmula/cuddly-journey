@@ -88,6 +88,20 @@ const RecentlyViewdItems = ({ relatedProducts }) => {
             slidesPerView={4}
             spaceBetween={20}
             className="justify-between"
+            breakpoints={{
+              // when window width is >= 640px
+              0: {
+                slidesPerView: 1,
+              },
+              1000: {
+                slidesPerView: 4,
+                // spaceBetween: 4,
+              },
+              // when window width is >= 768px
+              1200: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {relatedProducts && relatedProducts?.map((item, key) => (
               <SwiperSlide key={key}>

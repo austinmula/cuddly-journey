@@ -63,6 +63,16 @@ input[type='search']::-webkit-search-results-decoration {
   display: none; /*hide original SELECT element: */
 }
 
+.line-clamp{
+  display: block;
+  display: -webkit-box;
+  height: 77px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .select-selected {
   @apply bg-gray-1 rounded-l-[5px] border border-gray-3 !border-r-0 cursor-pointer text-dark text-custom-sm py-[11px] pl-3.5 pr-8 relative;
 }
