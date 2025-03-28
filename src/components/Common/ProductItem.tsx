@@ -185,7 +185,7 @@ const ProductItem = ({ item }: { item: Product }) => {
       </div> */}
 
       <h3
-        className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5"
+        className="font-medium text-dark line-clamp ease-out duration-200 hover:text-blue mb-1.5"
         onClick={() => handleProductDetails()}
       >
         <Link href={`/product-details/${item.slug.current}`}>
