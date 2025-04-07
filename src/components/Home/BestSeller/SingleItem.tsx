@@ -107,10 +107,10 @@ const SingleItem = ({ item }: { item: Product }) => {
           </h3>
 
           <span className="flex items-center justify-center gap-2 font-medium text-base">
-            <span className="text-dark-2 line-through">
+            <span className="text-dark-4 line-through">
               KShs.{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
-            <span className="text-dark-4">
+            <span className="text-[#151d40]">
               KShs.
               {item.discountedPrice
                 .toString()

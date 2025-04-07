@@ -329,7 +329,7 @@ const QuickViewModal = () => {
                   </h4>
 
                   <span className="flex items-center gap-2">
-                    <span className="font-semibold text-dark text-xl xl:text-heading-4">
+                    <span className="font-semibold text-[#151d40] text-xl xl:text-heading-4">
                       Kshs.{" "}
                       {product.discountedPrice
                         .toString()
