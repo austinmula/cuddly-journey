@@ -28,13 +28,13 @@ const PromoBanner = () => {
             </a>
           </div>
 
-          {/* <Image
+          <Image
             src="/images/promo/promo-01.png"
             alt="promo img"
             className="absolute bottom-0 right-4 lg:right-26 -z-1"
             width={274}
             height={350}
-          /> */}
+          />
         </div>
 
         {/* <div className="grid gap-7.5 grid-cols-1 lg:grid-cols-2">

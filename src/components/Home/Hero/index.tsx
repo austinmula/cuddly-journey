@@ -68,16 +68,16 @@ const Hero = () => {
           </div>
 
           {/* SmartPhones Section (Spans 2 columns, row 1) */}
-          <div className="md:col-start-4 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]">
+          <a href="/shop?category=0584954b-a331-4c4f-b100-003c94ead1a3" className="md:col-start-4 md:col-span-2 shadow-3 relative z-1 overflow-hidden rounded-lg min-h-[250px] md:min-h-[190px]">
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110"
-              style={{ backgroundImage: `url("/images/herro/phones.jpg")` }}
+              style={{ backgroundImage: `url("/images/herro/laptops-1.webp")` }}
             ></div>
             <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
             <div className="absolute pointer-events-none inset-0 bg-[black]/40 flex items-center justify-center text-white text-xl font-bold">
-              Quality SmartPhones
+              Quality Laptops
             </div>
-          </div>
+          </a>
 
           {/* Printers Section (Spans 2 columns, row 2) */}
           <a
