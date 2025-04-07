@@ -11,6 +11,7 @@ import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/lib/urlFor";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/redux/features/cart-slice";
+import { updateproductDetails } from "@/redux/features/product-details";
 
 const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [activeColor, setActiveColor] = useState("blue");
@@ -95,14 +96,15 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
     (state) => state.productDetailsReducer.value
   );
 
-  // const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
+  const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
 
-  // useEffect(() => {
-  //   localStorage.setItem("productDetails", JSON.stringify(productDetails));
-  // }, [product]);
+  useEffect(() => {
+    localStorage.setItem("productDetails", JSON.stringify(productDetails));
+  }, [product]);
 
   // pass the product here when you get the real data.
   const handlePreviewSlider = () => {
+    dispatch(updateproductDetails(productDetails));
     openPreviewModal();
   };
 
@@ -120,7 +122,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                 <div className="lg:max-w-[570px] w-full">
                   <div className="lg:min-h-[512px] rounded-lg shadow-1 bg-gray-2 p-4 sm:p-7.5 relative flex items-center justify-center">
                     <div>
-                      {/* <button
+                      <button
                         onClick={handlePreviewSlider}
                         aria-label="button for zoom"
                         className="gallery__Image w-11 h-11 rounded-[5px] bg-gray-1 shadow-1 flex items-center justify-center ease-out duration-200 text-dark hover:text-blue absolute top-4 lg:top-6 right-4 lg:right-6 z-50"
@@ -140,7 +142,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                             fill=""
                           />
                         </svg>
-                      </button> */}
+                      </button>
 
                       <Image
                         src={

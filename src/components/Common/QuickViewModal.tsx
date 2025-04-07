@@ -141,12 +141,12 @@ const QuickViewModal = () => {
                       </svg>
                     </button>
 
-                    {/* <Image
+                    <Image
                       src={product.images ? urlFor(product.images[activePreview]).toString() : "/images/quickview/quickview-big-05.png"}
                       alt="products-details"
                       width={400}
                       height={400}
-                    /> */}
+                    />
 
                     {/* <Image
                       src={product.images ? urlFor(product.images[activePreview]).toString() : "/images/quickview/quickview-big-07.png"}
@@ -169,7 +169,7 @@ const QuickViewModal = () => {
                 % OFF
               </span>
 
-              <h3 className="font-semibold text-xl xl:text-heading-5 text-dark mb-4">
+              <h3 className="font-semibold text-xl xl:text-heading-6 text-dark mb-4">
                 {product.title}
               </h3>
 
@@ -290,7 +290,7 @@ const QuickViewModal = () => {
                 </div> */}
 
                 <div className="flex items-center gap-2">
-                  <svg
+                  {/* <svg
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
@@ -312,15 +312,15 @@ const QuickViewModal = () => {
                         <rect width="20" height="20" fill="white" />
                       </clipPath>
                     </defs>
-                  </svg>
+                  </svg> */}
 
                   {/* <span className="font-medium text-dark"> In Stock </span> */}
                 </div>
               </div>
 
-              <div className="prose mb-5">
+              {/* <div className="prose mb-5">
                 <PortableText value={product.summary} />
-              </div>
+              </div> */}
 
               <div className="flex flex-wrap justify-between gap-5 mt-6 mb-7.5">
                 <div>
