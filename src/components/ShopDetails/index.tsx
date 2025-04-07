@@ -192,13 +192,13 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
                   </div>
 
                   <h3 className="font-thin text-custom-1 mb-4.5">
-                    <span className="text-2xl font-medium text-dark-2">
+                    <span className="text-2xl font-medium text-[#151d40]">
                       Kshs.{" "}
                       {productDetails.discountedPrice
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
-                    <span className="text-2xl text-dark-2 line-through ml-2">
+                    <span className="text-2xl text-dark-4 line-through ml-2">
                       Kshs.{" "}
                       {productDetails.price
                         .toString()
