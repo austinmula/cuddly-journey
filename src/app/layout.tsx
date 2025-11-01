@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import GoogleAnalytics from '@/components/Analytics/GoogleAnalytics'
+import MetaPixel from '@/components/Analytics/MetaPixel'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sharpspaceltd.com'),
@@ -64,7 +66,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <GoogleAnalytics />
+        <MetaPixel />
+        {children}
+      </body>
     </html>
   )
 }

@@ -19,6 +19,7 @@ import CategoriesSidebar from "@/components/Common/CategoriesSidebar";
 import { Category } from "@/models/category";
 import { getCategories } from "@/lib/api";
 import OrganizationSchema from "@/components/StructuredData/OrganizationSchema";
+import PageViewTracker from "@/components/Analytics/PageViewTracker";
 
 export default function RootLayout({
   children,
@@ -57,6 +58,7 @@ export default function RootLayout({
           <PreLoader />
         ) : (
           <>
+            <PageViewTracker />
             <ReduxProvider>
               <CartModalProvider>
                 <ModalProvider>
