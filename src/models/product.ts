@@ -51,9 +51,11 @@ export interface Variant {
 }
 
 export interface Review {
-  user: string;
+  user?: string;
+  author?: string;
   rating: number;
   comment: string;
+  date?: string;
 }
 
 export interface RelatedProduct {

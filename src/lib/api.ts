@@ -9,12 +9,26 @@ export const getCategories = async (): Promise<Category[]> => {
   const query = `*[_type == "category"] {
         _id,
         slug,
-        image, 
+        image,
         title
     }`;
 
   const categories: Category[] = await sanityClient.fetch(query);
   return categories;
+};
+
+export const getCategoryBySlug = async (
+  slug: string
+): Promise<Category | null> => {
+  const query = `*[_type == "category" && slug.current == $slug][0] {
+    _id,
+    slug,
+    image,
+    title
+  }`;
+
+  const category: Category | null = await sanityClient.fetch(query, { slug });
+  return category;
 };
 
 export const getProducts = async (): Promise<Product[]> => {
