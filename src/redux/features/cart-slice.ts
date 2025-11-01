@@ -60,9 +60,11 @@ type Variant = {
 };
 
 type Review = {
-  user: string;
+  user?: string;
+  author?: string;
   rating: number;
   comment: string;
+  date?: string;
 };
 
 type RelatedProduct = {
