@@ -45,6 +45,13 @@ const QuickViewModal = () => {
   };
 
   useEffect(() => {
+    // Reset activePreview if it's out of bounds
+    if (product.images && activePreview >= product.images.length) {
+      setActivePreview(0);
+    }
+  }, [product.images, activePreview]);
+
+  useEffect(() => {
     // closing modal while clicking outside
     function handleClickOutside(event) {
       if (!event.target.closest(".modal-content")) {
@@ -60,6 +67,7 @@ const QuickViewModal = () => {
       document.removeEventListener("mousedown", handleClickOutside);
 
       setQuantity(1);
+      setActivePreview(0);
     };
   }, [isModalOpen, closeModal]);
 
@@ -98,23 +106,26 @@ const QuickViewModal = () => {
               <div className="flex gap-5">
                 <div className="flex flex-col gap-5">
                   {product.images &&
-                    product.images.map((img, key) => (
-                      <button
-                        onClick={() => setActivePreview(key)}
-                        key={key}
-                        className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${
-                          activePreview === key && "border-2 border-blue"
-                        }`}
-                      >
-                        <Image
-                          src={urlFor(img).toString()}
-                          alt="thumbnail"
-                          width={61}
-                          height={61}
-                          className="aspect-square"
-                        />
-                      </button>
-                    ))}
+                    product.images.map((img, key) => {
+                      if (!img) return null;
+                      return (
+                        <button
+                          onClick={() => setActivePreview(key)}
+                          key={key}
+                          className={`flex items-center justify-center w-20 h-20 overflow-hidden rounded-lg bg-gray-1 ease-out duration-200 hover:border-2 hover:border-blue ${
+                            activePreview === key && "border-2 border-blue"
+                          }`}
+                        >
+                          <Image
+                            src={urlFor(img).toString()}
+                            alt="thumbnail"
+                            width={61}
+                            height={61}
+                            className="aspect-square"
+                          />
+                        </button>
+                      );
+                    })}
                 </div>
 
                 <div className="relative z-1 overflow-hidden flex items-center justify-center w-full sm:min-h-[508px] bg-gray-1 rounded-lg border border-gray-3">
@@ -142,7 +153,11 @@ const QuickViewModal = () => {
                     </button>
 
                     <Image
-                      src={product.images ? urlFor(product.images[activePreview]).toString() : "/images/quickview/quickview-big-05.png"}
+                      src={
+                        product.images && product.images[activePreview]
+                          ? urlFor(product.images[activePreview]).toString()
+                          : "/images/quickview/quickview-big-05.png"
+                      }
                       alt="products-details"
                       width={400}
                       height={400}

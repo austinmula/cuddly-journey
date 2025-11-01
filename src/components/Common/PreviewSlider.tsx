@@ -113,7 +113,7 @@ const PreviewSliderModal = () => {
             <div className="flex justify-center items-center">
               {image?.asset ? (
                 <Image
-                  src={urlFor(image)}
+                  src={urlFor(image).url()}
                   alt={`product image ${i}`}
                   width={450}
                   height={450}
@@ -138,7 +138,7 @@ const PreviewSliderModal = () => {
             <div className="flex justify-center items-center">
               {image?.asset ? (
                 <Image
-                  src={urlFor(image)}
+                  src={urlFor(image).url()}
                   alt={`product image ${i}`}
                   width={450}
                   height={450}

@@ -72,13 +72,15 @@ const ProductItem = ({ item }: { item: Product }) => {
         <a href={`/product-details/${item.slug.current}`}>
           <Image
             src={
-              item.images
+              item.images && item.images[0]
                 ? urlFor(item.images[0]).toString()
                 : "/images/quickview/quickview-big-05.png"
             }
             alt={item.title}
             width={250}
             height={250}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            loading="lazy"
           />
         </a>
 
