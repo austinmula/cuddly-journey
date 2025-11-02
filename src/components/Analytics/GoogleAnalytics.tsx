@@ -4,6 +4,10 @@ import Script from 'next/script';
 import { GA_MEASUREMENT_ID } from '@/lib/analytics/gtag';
 
 export default function GoogleAnalytics() {
+  // Check if GA_MEASUREMENT_ID is defined
+  // If not defined, return null to avoid loading the script
+  // This is useful for environments where you don't want to load Google Analytics
+  // such as development or staging environments
   if (!GA_MEASUREMENT_ID) {
     return null;
   }
