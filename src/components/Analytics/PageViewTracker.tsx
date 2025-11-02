@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import * as gtag from '@/lib/analytics/gtag';
-import * as metaPixel from '@/lib/analytics/meta-pixel';
 
 export default function PageViewTracker() {
   const pathname = usePathname();
@@ -15,9 +14,6 @@ export default function PageViewTracker() {
 
       // Track page view in Google Analytics
       gtag.pageview(url);
-
-      // Track page view in Meta Pixel
-      metaPixel.pageview();
     }
   }, [pathname, searchParams]);
 

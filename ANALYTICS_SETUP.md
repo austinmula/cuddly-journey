@@ -5,9 +5,8 @@ This guide will help you set up comprehensive user traffic tracking for SharpSpa
 ## 🎯 What's Included
 
 1. **Google Analytics 4 (GA4)** - Web traffic and user behavior
-2. **Meta Pixel (Facebook)** - Social media ads and conversions
-3. **E-commerce Tracking** - Product views, cart actions, purchases
-4. **Page View Tracking** - Automatic page navigation tracking
+2. **E-commerce Tracking** - Product views, cart actions, purchases
+3. **Page View Tracking** - Automatic page navigation tracking
 
 ## 📊 Setup Instructions
 
@@ -38,24 +37,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 2. Toggle **Enable e-commerce data collection**
 3. Save changes
 
-### 2. Meta Pixel (Facebook)
-
-#### Create Meta Pixel
-1. Go to [Meta Events Manager](https://business.facebook.com/events_manager)
-2. Click **Connect Data Sources** → **Web**
-3. Select **Meta Pixel** → **Connect**
-4. Name your pixel: `SharpSpaceLtd Pixel`
-5. Enter your website URL: `https://sharpspaceltd.com`
-6. Copy your **Pixel ID** (16-digit number)
-
-#### Add to Environment Variables
-Add to your `.env.local` file:
-
-```bash
-NEXT_PUBLIC_FB_PIXEL_ID=XXXXXXXXXXXXXXXX
-```
-
-### 3. Google Search Console
+### 2. Google Search Console
 
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Add property: `https://sharpspaceltd.com`
@@ -75,7 +57,6 @@ verification: {
 
 1. **Add environment variables** to your hosting platform (Vercel/Netlify):
    - `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-   - `NEXT_PUBLIC_FB_PIXEL_ID`
 
 2. **Build and deploy** your site
 
@@ -83,7 +64,6 @@ verification: {
    - Open your site in incognito mode
    - Navigate to a few pages
    - Check real-time reports in GA4
-   - Check Meta Pixel Helper extension
 
 ## 📈 What Gets Tracked
 
@@ -140,22 +120,6 @@ verification: {
 3. View engagement time
 4. Bounce rate per page
 
-### Meta Events Manager
-
-#### View Pixel Events
-1. Go to **Events Manager**
-2. Select your pixel
-3. View recent activity
-4. Check conversion events
-
-#### Create Custom Audiences
-1. Go to **Audiences**
-2. Create audience based on:
-   - Page visitors
-   - Product viewers
-   - Cart abandoners
-   - Purchasers
-
 ## 🎨 Custom Tracking Examples
 
 ### Track Button Clicks
@@ -195,7 +159,6 @@ Consider adding a cookie consent banner:
 ### Privacy Policy
 Update your privacy policy to mention:
 - Google Analytics usage
-- Meta Pixel usage
 - Cookie usage
 - Data retention
 - User rights
@@ -209,13 +172,12 @@ npm run dev
 
 Open browser console and look for:
 - `gtag` function calls
-- `fbq` function calls
 - Network requests to Google Analytics
 
 ### Test in Production
 1. Deploy to production
 2. Use [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger)
-3. Use [Meta Pixel Helper](https://chrome.google.com/webstore/detail/meta-pixel-helper)
+3. Check real-time reports
 
 ## 🎯 Key Metrics to Monitor
 
@@ -245,12 +207,6 @@ Open browser console and look for:
 3. Check browser console for errors
 4. Wait 24-48 hours for data to appear in reports
 
-### Meta Pixel not tracking
-1. Check Pixel ID is correct
-2. Use Meta Pixel Helper extension
-3. Check browser console for fbq errors
-4. Verify pixel status in Events Manager
-
 ### Events not firing
 1. Check network tab for outgoing requests
 2. Verify event syntax in code
@@ -260,20 +216,16 @@ Open browser console and look for:
 ## 📚 Resources
 
 - [GA4 Documentation](https://support.google.com/analytics/answer/10089681)
-- [Meta Pixel Guide](https://www.facebook.com/business/help/952192354843755)
 - [Google Tag Manager](https://tagmanager.google.com/)
 - [Next.js Analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
 
 ## ✅ Checklist
 
 - [ ] Created GA4 property
-- [ ] Created Meta Pixel
 - [ ] Added environment variables
 - [ ] Deployed to production
 - [ ] Verified tracking in GA4 real-time
-- [ ] Verified Meta Pixel events
 - [ ] Submitted sitemap to Search Console
 - [ ] Set up conversion goals
-- [ ] Created custom audiences
 - [ ] Tested e-commerce events
 - [ ] Updated privacy policy

@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import * as gtag from '@/lib/analytics/gtag';
-import * as metaPixel from '@/lib/analytics/meta-pixel';
 import { Product } from '@/models/product';
 
 export function useAnalytics() {
@@ -16,9 +15,6 @@ export function useAnalytics() {
 
     // GA4
     gtag.viewItem(item);
-
-    // Meta Pixel
-    metaPixel.viewContent(product._id, product.title, product.discountedPrice || product.price);
   }, []);
 
   const trackAddToCart = useCallback((product: Product, quantity: number = 1) => {
@@ -33,9 +29,6 @@ export function useAnalytics() {
 
     // GA4
     gtag.addToCart(item);
-
-    // Meta Pixel
-    metaPixel.addToCart(product._id, product.title, (product.discountedPrice || product.price) * quantity);
   }, []);
 
   const trackRemoveFromCart = useCallback((product: Product, quantity: number = 1) => {
@@ -64,9 +57,6 @@ export function useAnalytics() {
 
     // GA4
     gtag.addToWishlist(item);
-
-    // Meta Pixel
-    metaPixel.addToWishlist(product._id, product.title, product.discountedPrice || product.price);
   }, []);
 
   const trackViewCart = useCallback((products: Product[], totalValue: number) => {
@@ -93,13 +83,8 @@ export function useAnalytics() {
       quantity: 1,
     }));
 
-    const productIds = products.map((p) => p._id);
-
     // GA4
     gtag.beginCheckout(items, totalValue);
-
-    // Meta Pixel
-    metaPixel.initiateCheckout(productIds, totalValue);
   }, []);
 
   const trackPurchase = useCallback(
@@ -119,13 +104,8 @@ export function useAnalytics() {
         quantity: 1,
       }));
 
-      const productIds = products.map((p) => p._id);
-
       // GA4
       gtag.purchase(transactionId, items, totalValue, tax, shipping);
-
-      // Meta Pixel
-      metaPixel.purchase(productIds, totalValue);
     },
     []
   );
@@ -133,9 +113,6 @@ export function useAnalytics() {
   const trackSearch = useCallback((searchTerm: string) => {
     // GA4
     gtag.search(searchTerm);
-
-    // Meta Pixel
-    metaPixel.search(searchTerm);
   }, []);
 
   const trackCategoryView = useCallback((categoryName: string, itemCount: number) => {

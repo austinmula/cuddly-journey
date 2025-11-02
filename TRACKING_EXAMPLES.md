@@ -1,4 +1,4 @@
-# Analytics Tracking Implementation Examples
+# Google Analytics Tracking Implementation Examples
 
 ## How to Use the Analytics Hook
 
@@ -12,7 +12,7 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 function MyComponent() {
   const analytics = useAnalytics();
 
-  // Use analytics methods
+  // Use analytics methods - all tracked via Google Analytics 4
 }
 ```
 
@@ -327,11 +327,10 @@ export default function NewsletterForm() {
 
 ## Direct Function Calls
 
-If you prefer not to use the hook, you can call functions directly:
+If you prefer not to use the hook, you can call Google Analytics functions directly:
 
 ```typescript
 import * as gtag from '@/lib/analytics/gtag';
-import * as metaPixel from '@/lib/analytics/meta-pixel';
 
 // Google Analytics
 gtag.event({
@@ -340,9 +339,6 @@ gtag.event({
   label: 'contact_us',
   value: 1
 });
-
-// Meta Pixel
-metaPixel.viewContent('product-id', 'Product Name', 999);
 ```
 
 ## Testing Your Implementation
@@ -353,23 +349,17 @@ Open browser console and check for:
 // GA4
 window.gtag
 window.dataLayer
-
-// Meta Pixel
-window.fbq
 ```
 
 ### 2. Network Tab
 Look for requests to:
 - `google-analytics.com`
-- `facebook.com/tr`
 
 ### 3. Extensions
 - [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger)
-- [Meta Pixel Helper](https://chrome.google.com/webstore/detail/meta-pixel-helper)
 
 ### 4. Real-time Reports
 - GA4: Reports → Realtime
-- Meta: Events Manager → Test Events
 
 ## Best Practices
 
