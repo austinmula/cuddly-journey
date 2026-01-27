@@ -27,14 +27,21 @@ const featureData = [
 const HeroFeature = () => {
   return (
     <div className="max-w-[1060px] w-full mx-auto px-4 sm:px-8 xl:px-0">
-      <div className="flex flex-wrap items-center justify-center gap-7.5 xl:gap-12.5 mt-10">
+      <div className="flex flex-wrap items-center justify-center gap-5 xl:gap-8 mt-10">
         {featureData.map((item, key) => (
-          <div className="flex items-center gap-4" key={key}>
-            <Image src={item.img} alt="icons" width={40} height={41} />
+          <div
+            className="flex items-center gap-4 bg-white rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-200"
+            key={key}
+          >
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 shrink-0">
+              <Image src={item.img} alt="icons" width={28} height={28} />
+            </div>
 
             <div>
-              <h3 className="font-medium text-lg text-dark">{item.title}</h3>
-              <p className="text-sm">{item.description}</p>
+              <h3 className="font-semibold text-base text-dark">
+                {item.title}
+              </h3>
+              <p className="text-sm text-dark-3/70">{item.description}</p>
             </div>
           </div>
         ))}
