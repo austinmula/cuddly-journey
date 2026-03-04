@@ -1,9 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import SingleItem from "./SingleItem";
-import Image from "next/image";
 import Link from "next/link";
-import shopData from "@/components/Shop/shopData";
 import { Product } from "@/models/product";
 import { getRandomProducts } from "@/lib/api";
 
@@ -26,20 +24,14 @@ const BestSeller = () => {
 
   return (
     <section className="overflow-hidden">
-      <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
+      <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         {/* <!-- section title --> */}
         <div className="mb-10 flex items-center justify-between">
-          <div>
-            <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
-              <Image
-                src="/images/icons/icon-07.svg"
-                alt="icon"
-                width={17}
-                height={17}
-              />
+          <div className="border-l-4 border-blue pl-4">
+            <span className="block text-xs font-semibold text-blue uppercase tracking-widest mb-1">
               Browse Catalogue
             </span>
-            <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">
+            <h2 className="font-bold text-2xl text-dark">
               Top Picks
             </h2>
           </div>
