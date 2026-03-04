@@ -8,8 +8,8 @@ const PriceDropdown = ({ setPriceRange, priceRange, updateFilters, selectedCateg
   const [toggleDropdown, setToggleDropdown] = useState(true);
 
   const [selectedPrice, setSelectedPrice] = useState({
-    from: 0,
-    to: 500000,
+    from: priceRange[0],
+    to: priceRange[1],
   });
 
   return (
@@ -20,7 +20,6 @@ const PriceDropdown = ({ setPriceRange, priceRange, updateFilters, selectedCateg
       >
         <p className="text-dark">Price</p>
         <button
-          onClick={() => setToggleDropdown(!toggleDropdown)}
           id="price-dropdown-btn"
           aria-label="button for price dropdown"
           className={`text-dark ease-out duration-200 ${toggleDropdown && "rotate-180"

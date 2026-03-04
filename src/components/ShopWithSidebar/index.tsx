@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Breadcrumb from "../Common/Breadcrumb";
-import CustomSelect from "./CustomSelect";
 import CategoryDropdown from "./CategoryDropdown";
 import GenderDropdown from "./GenderDropdown";
 import SizeDropdown from "./SizeDropdown";
@@ -37,20 +36,17 @@ const ShopWithSidebar = () => {
     const fetchData = async () => {
       try {
         const fetchedCategories = await getCategories();
-        console.log(fetchedCategories)
         setCategories(fetchedCategories);
-
       } catch (error) {
-        console.log(error)
-        setCategories([])
+        setCategories([]);
       }
 
-      const fetchedProducts = await getProductsByFilters(selectedCategory || undefined, priceRange[0], priceRange[1], searchTerm);
+      const fetchedProducts = await getProductsByFilters(selectedCategory || undefined, minPrice, maxPrice, searchTerm || undefined);
       setProducts(fetchedProducts);
     };
 
     fetchData();
-  }, [selectedCategory, priceRange, searchTerm]);
+  }, [selectedCategory, minPrice, maxPrice, searchTerm]);
 
   // Update URL when filters change
   const updateFilters = (categoryId: string | null, min: number, max: number) => {
@@ -58,7 +54,12 @@ const ShopWithSidebar = () => {
     if (categoryId) newParams.set("category", categoryId);
     if (min !== 0) newParams.set("minPrice", min.toString());
     if (max !== 500000) newParams.set("maxPrice", max.toString());
+    if (searchTerm) newParams.set("search", searchTerm);
     router.push(`/shop?${newParams.toString()}`);
+  };
+
+  const clearAllFilters = () => {
+    router.push("/shop");
   };
 
   const handleStickyMenu = () => {
@@ -68,12 +69,6 @@ const ShopWithSidebar = () => {
       setStickyMenu(false);
     }
   };
-
-  const options = [
-    { label: "Latest Products", value: "0" },
-    { label: "Best Selling", value: "1" },
-    { label: "Old Products", value: "2" },
-  ];
 
   // const categories = [
   //   {
@@ -125,22 +120,23 @@ const ShopWithSidebar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyMenu);
+    return () => {
+      window.removeEventListener("scroll", handleStickyMenu);
+    };
+  }, []);
 
-    // closing sidebar while clicking outside
-    function handleClickOutside(event) {
-      if (!event.target.closest(".sidebar-content")) {
+  useEffect(() => {
+    if (!productSidebar) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (!(event.target as Element).closest(".sidebar-content")) {
         setProductSidebar(false);
       }
     }
-
-    if (productSidebar) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  });
+  }, [productSidebar]);
 
   return (
     <>
@@ -195,7 +191,7 @@ const ShopWithSidebar = () => {
                   <div className="bg-white shadow-1 rounded-lg py-4 px-5">
                     <div className="flex items-center justify-between">
                       <p>Filters:</p>
-                      <button className="text-blue">Clean All</button>
+                      <button onClick={clearAllFilters} className="text-blue hover:underline text-sm">Clear All</button>
                     </div>
                   </div>
 
@@ -223,12 +219,9 @@ const ShopWithSidebar = () => {
               <div className="rounded-lg bg-white shadow-1 pl-3 pr-2.5 py-2.5 mb-6">
                 <div className="flex items-center justify-between">
                   {/* <!-- top bar left --> */}
-                  <div className="flex flex-wrap invisible items-center gap-4">
-                    <CustomSelect options={options} />
-
-                    <p>
-                      Showing <span className="text-dark">9 of 50</span>{" "}
-                      Products
+                  <div className="flex flex-wrap items-center gap-4">
+                    <p className="text-sm text-dark-4">
+                      <span className="text-dark font-medium">{products.length}</span> product{products.length !== 1 ? "s" : ""} found
                     </p>
                   </div>
 
