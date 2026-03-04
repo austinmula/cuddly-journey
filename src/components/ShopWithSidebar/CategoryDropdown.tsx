@@ -9,7 +9,7 @@ const CategoryItem = ({ updateFilters,category, priceRange, selectedCategory }) 
       className={`${
         selectedCategory === category._id && "text-blue"
       } group flex items-center justify-between ease-out duration-200 hover:text-blue `}
-      onClick={() => updateFilters(category._id, priceRange[0], priceRange[1])}
+      onClick={() => updateFilters(selectedCategory === category._id ? null : category._id, priceRange[0], priceRange[1])}
     >
       <div className="flex items-center gap-2">
         <div
