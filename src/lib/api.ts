@@ -278,6 +278,33 @@ export const getRandomProducts = async (): Promise<Product[]> => {
   }
 };
 
+export const searchProducts = async (query: string): Promise<Product[]> => {
+  const groqQuery = `*[_type == "product" && (
+    title match $q + "*" ||
+    category->title match $q + "*" ||
+    brand match $q + "*"
+  )] | order(_createdAt desc) {
+    _id,
+    title,
+    slug,
+    brand,
+    price,
+    discountedPrice,
+    stock,
+    category->{ _id, title, slug },
+    images,
+    description,
+    summary,
+    variants,
+    reviews,
+    relatedProducts[]->{ _id, title, slug },
+    createdAt
+  }`;
+
+  const products: Product[] = await sanityClient.fetch(groqQuery, { q: query }, { cache: "no-cache" });
+  return products;
+};
+
 // export const getGames = async (): Promise<Game[]> => {
 // 	const query = `*[_type == "game"] {
 //         name,
