@@ -12,6 +12,7 @@ import { urlFor } from "@/lib/urlFor";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/redux/features/cart-slice";
 import { updateproductDetails } from "@/redux/features/product-details";
+import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 
 const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [activeColor, setActiveColor] = useState("blue");
@@ -23,6 +24,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
   const [sim, setSim] = useState("dual");
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch<AppDispatch>();
+  const { openCartModal } = useCartModalContext();
   // add to cart
   const handleAddToCart = () => {
     dispatch(
@@ -31,6 +33,7 @@ const ShopDetails = ({ productDetails }: { productDetails: Product }) => {
         quantity,
       })
     );
+    openCartModal();
   };
 
   const [activeTab, setActiveTab] = useState("tabOne");

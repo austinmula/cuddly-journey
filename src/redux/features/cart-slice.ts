@@ -99,7 +99,7 @@ export const cart = createSlice({
           discountedPrice: action.payload.discountedPrice,
           stock: action.payload.stock,
           quantity,
-          status,
+          status: action.payload.status,
           category: action.payload.category,
           images,
           description: action.payload.description,

@@ -2,6 +2,7 @@
 import React from "react";
 import { Product } from "@/models/product";
 import { useModalContext } from "@/app/context/QuickViewModalContext";
+import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { updateQuickView } from "@/redux/features/quickView-slice";
@@ -15,6 +16,7 @@ import { calculateDiscountPercentage } from "@/lib/discount";
 const SingleItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
   const { openModal } = useModalContext();
+  const { openCartModal } = useCartModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
   // update the QuickView state
@@ -30,6 +32,7 @@ const SingleItem = ({ item }: { item: Product }) => {
         quantity: 1,
       })
     );
+    openCartModal();
   };
 
   const handleItemToWishList = () => {
