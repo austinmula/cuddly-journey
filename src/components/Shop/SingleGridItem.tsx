@@ -3,6 +3,7 @@ import React from "react";
 import { Product } from "@/models/product";
 import { useModalContext } from "@/app/context/QuickViewModalContext";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
+import { useWishlistModalContext } from "@/app/context/WishlistSidebarModalContext";
 import { updateQuickView } from "@/redux/features/quickView-slice";
 import { addItemToCart } from "@/redux/features/cart-slice";
 import { addItemToWishlist } from "@/redux/features/wishlist-slice";
@@ -17,7 +18,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
   const { openModal } = useModalContext();
   const { openCartModal } = useCartModalContext();
-
+  const { openWishlistModal } = useWishlistModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
   const handleWhatsAppClick = () => {
@@ -53,6 +54,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
         quantity: 1,
       })
     );
+    openWishlistModal();
   };
 
   return (

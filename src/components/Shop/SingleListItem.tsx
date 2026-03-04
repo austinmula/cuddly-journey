@@ -3,6 +3,7 @@ import React from "react";
 
 import { Product } from "@/models/product";
 import { useModalContext } from "@/app/context/QuickViewModalContext";
+import { useWishlistModalContext } from "@/app/context/WishlistSidebarModalContext";
 import { updateQuickView } from "@/redux/features/quickView-slice";
 import { addItemToCart } from "@/redux/features/cart-slice";
 import { addItemToWishlist } from "@/redux/features/wishlist-slice";
@@ -16,6 +17,7 @@ import { calculateDiscountPercentage } from "@/lib/discount";
 const SingleListItem = ({ item }: { item: Product }) => {
   const phoneNumber = "254732652000";
   const { openModal } = useModalContext();
+  const { openWishlistModal } = useWishlistModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
   // update the QuickView state
@@ -41,6 +43,7 @@ const SingleListItem = ({ item }: { item: Product }) => {
         quantity: 1,
       })
     );
+    openWishlistModal();
   };
 
   const handleWhatsAppClick = () => {

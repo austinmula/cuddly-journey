@@ -7,6 +7,17 @@ import productDetailsReducer from "./features/product-details";
 
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
+const loadWishlistFromStorage = () => {
+  try {
+    if (typeof window === "undefined") return undefined;
+    const serialized = localStorage.getItem("wishlist");
+    if (!serialized) return undefined;
+    return { items: JSON.parse(serialized) };
+  } catch {
+    return undefined;
+  }
+};
+
 export const store = configureStore({
   reducer: {
     quickViewReducer,
@@ -14,6 +25,19 @@ export const store = configureStore({
     wishlistReducer,
     productDetailsReducer,
   },
+  preloadedState: {
+    wishlistReducer: loadWishlistFromStorage(),
+  },
+});
+
+store.subscribe(() => {
+  try {
+    if (typeof window === "undefined") return;
+    const items = store.getState().wishlistReducer.items;
+    localStorage.setItem("wishlist", JSON.stringify(items));
+  } catch {
+    // ignore write errors
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
