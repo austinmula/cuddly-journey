@@ -97,7 +97,7 @@ const SearchResults = () => {
             </svg>
             <p className="font-semibold text-dark text-lg mb-2">No results found</p>
             <p className="text-dark/60 text-sm max-w-xs">
-              We couldn't find anything for "{query}". Try a different keyword or browse all products.
+              We couldn&apos;t find anything for &quot;{query}&quot;. Try a different keyword or browse all products.
             </p>
             <a
               href="/shop"
