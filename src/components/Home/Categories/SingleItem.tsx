@@ -7,7 +7,7 @@ const SingleItem = ({ item }: { item: Category }) => {
   return (
     <a href={`/mini-shop/${item.slug.current}`} className="group flex flex-col items-center">
       <div className="max-w-[90px] w-full bg-[#F2F3F8] h-20 rounded-full flex items-center justify-center mb-4">
-        <Image src={urlFor(item.image).toString()} alt={item.title} width={62} height={62} />
+        <Image src={urlFor(item.image).toString()} alt={item.title} width={62} height={62} className="mix-blend-multiply" />
       </div>
 
       <div className="flex justify-center">
