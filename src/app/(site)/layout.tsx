@@ -7,9 +7,11 @@ import Footer from "../../components/Footer";
 
 import { ModalProvider } from "../context/QuickViewModalContext";
 import { CartModalProvider } from "../context/CartSidebarModalContext";
+import { WishlistModalProvider } from "../context/WishlistSidebarModalContext";
 import { ReduxProvider } from "@/redux/provider";
 import QuickViewModal from "@/components/Common/QuickViewModal";
 import CartSidebarModal from "@/components/Common/CartSidebarModal";
+import WishlistSidebarModal from "@/components/Common/WishlistSidebarModal";
 import { PreviewSliderProvider } from "../context/PreviewSliderContext";
 import PreviewSliderModal from "@/components/Common/PreviewSlider";
 
@@ -61,17 +63,20 @@ export default function RootLayout({
             <PageViewTracker />
             <ReduxProvider>
               <CartModalProvider>
-                <ModalProvider>
-                  <PreviewSliderProvider>
-                    <Header />
-                    {/* <CategoriesSidebar categories={categories} /> */}
-                    {children}
+                <WishlistModalProvider>
+                  <ModalProvider>
+                    <PreviewSliderProvider>
+                      <Header />
+                      {/* <CategoriesSidebar categories={categories} /> */}
+                      {children}
 
-                    <QuickViewModal />
-                    <CartSidebarModal />
-                    <PreviewSliderModal />
-                  </PreviewSliderProvider>
-                </ModalProvider>
+                      <QuickViewModal />
+                      <CartSidebarModal />
+                      <WishlistSidebarModal />
+                      <PreviewSliderModal />
+                    </PreviewSliderProvider>
+                  </ModalProvider>
+                </WishlistModalProvider>
               </CartModalProvider>
             </ReduxProvider>
             <ScrollToTop />
