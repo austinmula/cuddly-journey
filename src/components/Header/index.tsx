@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,19 +17,11 @@ const Header = () => {
   const [stickyMenu, setStickyMenu] = useState(false);
   const { openCartModal } = useCartModalContext();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!searchQuery.trim()) return;
-
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("search", searchQuery);
-
-    console.log("Navigating to:", `/shop?${params.toString()}`);
-
-    router.push(`/shop?${params.toString()}`);
+    router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
   };
 
   const product = useAppSelector((state) => state.cartReducer.items);

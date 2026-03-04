@@ -7,21 +7,15 @@ import BestSeller from "./BestSeller";
 import CounDown from "./Countdown";
 import Testimonials from "./Testimonials";
 import Newsletter from "../Common/Newsletter";
-import { getCategories, getRandomProducts, getRecentProducts } from "@/lib/api";
-import { Category } from "@/models/category";
-import { Product } from "@/models/product";
+import RamadanSale from "./RamadanSale";
 
 const Home = () => {
-  // const categories: Category[] = await getCategories();
-  // const recentProducts: Product[] = await getRecentProducts();
-  // const topPicks: Product[] = await getRandomProducts();
-
-  // console.log(topPicks)
   return (
     <main>
       <Categories />
       <Hero />
       <NewArrival />
+      <RamadanSale />
       <PromoBanner />
       <BestSeller />
       {/* 
