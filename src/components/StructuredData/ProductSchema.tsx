@@ -37,7 +37,7 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
     offers: {
       '@type': 'Offer',
       url: `https://sharpspaceltd.com/product-details/${product.slug.current}`,
-      priceCurrency: 'USD',
+      priceCurrency: 'KES',
       price: product.discountedPrice || product.price,
       priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
         .toISOString()

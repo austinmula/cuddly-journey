@@ -6,23 +6,30 @@ export default function OrganizationSchema() {
     '@type': 'Organization',
     name: 'SharpSpaceLtd',
     url: 'https://sharpspaceltd.com',
-    logo: 'https://sharpspaceltd.com/images/logo/logo.svg',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://sharpspaceltd.com/images/logo/logo.svg',
+    },
     description: 'At SharpSpaceLtd We Offer Top-Quality Computers, Accessories & Expert Laptop Repairs! Power up your tech with premium electronics and professional services.',
     contactPoint: {
       '@type': 'ContactPoint',
+      telephone: '+254-732-652000',
       contactType: 'Customer Service',
       email: 'info@sharpspaceltd.com',
+      areaServed: 'KE',
+      availableLanguage: ['English', 'Swahili'],
     },
     sameAs: [
-      // Add your social media profiles here
-      // 'https://www.facebook.com/sharpspaceltd',
-      // 'https://twitter.com/sharpspaceltd',
-      // 'https://www.instagram.com/sharpspaceltd',
-      // 'https://www.linkedin.com/company/sharpspaceltd',
+      'https://www.facebook.com/SharpSpaceLtd',
+      'https://twitter.com/SharpSpaceLtd',
+      'https://www.instagram.com/SharpSpaceLtd',
     ],
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://sharpspaceltd.com/shop?search={search_term_string}',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://sharpspaceltd.com/shop?search={search_term_string}',
+      },
       'query-input': 'required name=search_term_string',
     },
   };
