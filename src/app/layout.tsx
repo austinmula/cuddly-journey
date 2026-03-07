@@ -52,9 +52,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
+    google: '69e6c3336ad8d7bf',
   },
 }
 
