@@ -38,7 +38,7 @@ const RamadanSale = () => {
   if (products.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden py-16 bg-[#120826]">
+    <section className="relative overflow-hidden py-10 sm:py-16 bg-[#120826]">
       {/* ── Decorative background ─────────────────────── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Soft glow blobs */}
@@ -107,7 +107,7 @@ const RamadanSale = () => {
 
       <div className="relative max-w-[1280px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         {/* ── Section header ────────────────────────────── */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <span className="inline-flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest mb-3 bg-amber-400/10 border border-amber-400/20 px-4 py-1.5 rounded-full">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0L9.8 5.5H16L11.1 8.9L12.9 14.4L8 11L3.1 14.4L4.9 8.9L0 5.5H6.2L8 0Z" />
@@ -142,7 +142,7 @@ const RamadanSale = () => {
           </p>
 
           {/* Countdown */}
-          <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6">
             {[
               { label: "Days", value: countdown.days },
               { label: "Hours", value: countdown.hours },
@@ -150,14 +150,14 @@ const RamadanSale = () => {
               { label: "Secs", value: countdown.seconds },
             ].map(({ label, value }, i) => (
               <React.Fragment key={label}>
-                {i > 0 && <span className="text-amber-400/60 font-bold text-xl mb-4">:</span>}
+                {i > 0 && <span className="text-amber-400/60 font-bold text-lg sm:text-xl mb-4">:</span>}
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-amber-400/20 backdrop-blur-sm">
-                    <span className="text-white font-bold text-xl tabular-nums">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-white/5 border border-amber-400/20 backdrop-blur-sm">
+                    <span className="text-white font-bold text-lg sm:text-xl tabular-nums">
                       {String(value).padStart(2, "0")}
                     </span>
                   </div>
-                  <span className="text-amber-400/70 text-[10px] uppercase tracking-widest mt-1.5 font-medium">
+                  <span className="text-amber-400/70 text-[9px] sm:text-[10px] uppercase tracking-widest mt-1.5 font-medium">
                     {label}
                   </span>
                 </div>

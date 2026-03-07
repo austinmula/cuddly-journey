@@ -26,7 +26,7 @@ const BestSeller = () => {
     <section className="overflow-hidden">
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         {/* <!-- section title --> */}
-        <div className="mb-10 flex items-center justify-between">
+        <div className="mb-6 sm:mb-10 flex items-center justify-between">
           <div className="border-l-4 border-blue pl-4">
             <span className="block text-xs font-semibold text-blue uppercase tracking-widest mb-1">
               Browse Catalogue
@@ -37,7 +37,7 @@ const BestSeller = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7.5">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-7.5">
           {/* <!-- Best Sellers item --> */}
           {topPicks.map((item, key) => (
             <SingleItem item={item} key={key} />

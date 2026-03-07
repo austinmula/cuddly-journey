@@ -41,7 +41,7 @@ const SingleItem = ({ item }: { item: Product }) => {
   };
 
   return (
-    <div className="group relative flex flex-col bg-[#F8F9FA] rounded-xl overflow-hidden transition-all duration-300 max-w-[300px] w-full mx-auto">
+    <div className="group relative flex flex-col bg-[#F8F9FA] rounded-xl overflow-hidden transition-all duration-300 w-full sm:max-w-[300px] sm:mx-auto">
 
       {/* ── Image area ─────────────────────────────────── */}
       <div className="relative bg-[#F6F7FB] overflow-hidden flex-1">
@@ -65,7 +65,7 @@ const SingleItem = ({ item }: { item: Product }) => {
 
         {/* Product image */}
         <Link href={`/product-details/${item.slug.current}`} className="block">
-          <div className="flex items-center justify-center h-[260px] p-5">
+          <div className="flex items-center justify-center h-[160px] sm:h-[260px] p-3 sm:p-5">
             <Image
               src={
                 item.images
@@ -80,8 +80,8 @@ const SingleItem = ({ item }: { item: Product }) => {
           </div>
         </Link>
 
-        {/* Hover action bar */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+        {/* Action bar — always visible on mobile, slides up on hover for desktop */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-transform duration-300 ease-out">
           <div className="flex gap-2 p-3 bg-white/95 backdrop-blur-sm">
             <button
               onClick={handleAddToCart}
@@ -110,7 +110,7 @@ const SingleItem = ({ item }: { item: Product }) => {
       </div>
 
       {/* ── Card body ───────────────────────────────────── */}
-      <div className="p-4">
+      <div className="p-2.5 sm:p-4">
         <h3 className="text-sm font-medium text-dark line-clamp leading-snug mb-2 hover:text-blue transition-colors duration-200">
           <Link href={`/product-details/${item.slug.current}`}>
             {item.title}

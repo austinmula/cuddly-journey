@@ -50,16 +50,16 @@ const HeroCarousal = () => {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative z-2 flex flex-col justify-end min-h-[350px] sm:min-h-[400px] lg:min-h-[450px] p-6 sm:p-8 lg:p-12">
+          <div className="relative z-2 flex flex-col justify-end min-h-[280px] sm:min-h-[380px] lg:min-h-[450px] p-5 sm:p-8 lg:p-12">
             <span className="inline-block w-fit text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4">
               {slide.tag}
             </span>
 
-            <h1 className="font-bold text-white text-2xl sm:text-3xl lg:text-4xl mb-3 drop-shadow-md">
+            <h1 className="font-bold text-white text-xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3 drop-shadow-md">
               {slide.title}
             </h1>
 
-            <p className="text-white text-sm sm:text-base max-w-[460px] leading-relaxed mb-8">
+            <p className="text-white text-xs sm:text-base max-w-[460px] leading-relaxed mb-5 sm:mb-8 line-clamp-3 sm:line-clamp-none">
               {slide.description}
             </p>
 
