@@ -89,7 +89,7 @@ export async function generateMetadata({
     },
     other: {
       'product:price:amount': productPrice.toString(),
-      'product:price:currency': 'USD',
+      'product:price:currency': 'KES',
       'product:availability': inStock ? 'in stock' : 'out of stock',
       'product:condition': 'new',
     },
