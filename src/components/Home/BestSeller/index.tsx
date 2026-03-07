@@ -1,26 +1,10 @@
-"use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SingleItem from "./SingleItem";
 import Link from "next/link";
-import { Product } from "@/models/product";
 import { getRandomProducts } from "@/lib/api";
 
-const BestSeller = () => {
-
-   const [topPicks, setTopPicks] = useState<Product[]>([])
-  
-    useEffect(()=> {
-      getRecentProductData();
-    }, [])
-  
-    const getRecentProductData = async() => {
-      try {
-        const data = await getRandomProducts()
-        setTopPicks(data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+const BestSeller = async () => {
+  const topPicks = await getRandomProducts();
 
   return (
     <section className="overflow-hidden">

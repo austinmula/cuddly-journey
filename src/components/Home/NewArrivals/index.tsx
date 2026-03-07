@@ -1,25 +1,11 @@
-"use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import ProductItem from "@/components/Common/ProductItem";
-import { Product } from "@/models/product";
 import { getRecentProducts } from "@/lib/api";
 
-const NewArrival = () => {
-  const [recentProducts, setRecentProducts] = useState<Product[]>([])
+const NewArrival = async () => {
+  const recentProducts = await getRecentProducts();
 
-  useEffect(()=> {
-    getRecentProductData();
-  }, [])
-
-  const getRecentProductData = async() => {
-    try {
-      const data = await getRecentProducts()
-      setRecentProducts(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
   return (
     <section className="overflow-hidden pt-10">
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 xl:px-0">

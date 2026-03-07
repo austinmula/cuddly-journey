@@ -1,39 +1,11 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { Product } from "@/models/product";
 import { getRandomProducts } from "@/lib/api";
 import SingleItem from "../BestSeller/SingleItem";
+import Countdown from "./Countdown";
 
-const SALE_END = new Date("2026-03-20T23:59:59+03:00");
-
-function useCountdown(end: Date) {
-  const calc = () => {
-    const diff = Math.max(0, end.getTime() - Date.now());
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / 1000) % 60),
-    };
-  };
-  const [time, setTime] = useState(calc);
-  useEffect(() => {
-    const id = setInterval(() => setTime(calc()), 1000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
-}
-
-const RamadanSale = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const countdown = useCountdown(SALE_END);
-
-  useEffect(() => {
-    getRandomProducts()
-      .then((data) => setProducts(data.slice(0, 8)))
-      .catch(() => {});
-  }, []);
+const RamadanSale = async () => {
+  const products = (await getRandomProducts()).slice(0, 8);
 
   if (products.length === 0) return null;
 
@@ -119,7 +91,6 @@ const RamadanSale = () => {
           </span>
 
           <div className="flex items-center justify-center gap-4 mb-3">
-            {/* Crescent inline */}
             <svg width="32" height="32" viewBox="0 0 80 80" fill="none">
               <path
                 d="M55 10C38.43 10 25 23.43 25 40C25 56.57 38.43 70 55 70C47.76 70 41.01 67.11 36 62.33C27.41 54.09 24.12 41.41 28.5 29.83C32.88 18.25 44.02 10 55 10Z"
@@ -141,29 +112,8 @@ const RamadanSale = () => {
             Celebrate the holy month with exclusive deals on top products. Prices slashed — don&apos;t miss out.
           </p>
 
-          {/* Countdown */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6">
-            {[
-              { label: "Days", value: countdown.days },
-              { label: "Hours", value: countdown.hours },
-              { label: "Mins", value: countdown.minutes },
-              { label: "Secs", value: countdown.seconds },
-            ].map(({ label, value }, i) => (
-              <React.Fragment key={label}>
-                {i > 0 && <span className="text-amber-400/60 font-bold text-lg sm:text-xl mb-4">:</span>}
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-white/5 border border-amber-400/20 backdrop-blur-sm">
-                    <span className="text-white font-bold text-lg sm:text-xl tabular-nums">
-                      {String(value).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <span className="text-amber-400/70 text-[9px] sm:text-[10px] uppercase tracking-widest mt-1.5 font-medium">
-                    {label}
-                  </span>
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
+          <Countdown />
+
           <p className="text-purple-300/50 text-xs mt-3">Sale ends March 20, 2026</p>
 
           {/* Gold divider */}

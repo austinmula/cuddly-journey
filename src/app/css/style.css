@@ -137,7 +137,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 .hero-carousel .swiper-pagination {
-  @apply xl:!bottom-5;
+  @apply hidden sm:block xl:!bottom-5;
 }
 
 .common-carousel .swiper-button-next:after,
