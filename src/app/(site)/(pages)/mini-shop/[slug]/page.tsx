@@ -39,6 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const description = `Shop ${category.title} at SharpSpaceLtd. Browse ${productCount} high-quality ${category.title.toLowerCase()} products including computers, accessories, and more. Fast delivery in Kenya.`;
 
+  const hasProducts = productCount > 0;
+
   return {
     title: `Buy ${category.title} in Kenya | SharpSpaceLtd - ${productCount} Products`,
     description,
@@ -53,10 +55,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     authors: [{ name: 'SharpSpaceLtd' }],
     robots: {
-      index: true,
+      index: hasProducts,
       follow: true,
       googleBot: {
-        index: true,
+        index: hasProducts,
         follow: true,
         'max-video-preview': -1,
         'max-image-preview': 'large',

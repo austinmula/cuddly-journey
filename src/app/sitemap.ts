@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getCategories } from '@/lib/api'
 import sanityClient from '@/lib/sanity'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -39,16 +38,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Dynamic category pages
+  // Dynamic category pages (only categories with at least one product)
   let categoryPages: MetadataRoute.Sitemap = []
   try {
-    const categories = await getCategories()
-    categoryPages = categories.map((category) => ({
-      url: `${baseUrl}/mini-shop/${category.slug.current}`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.85,
-    }))
+    const categoriesWithCount: { slug: { current: string }; productCount: number }[] =
+      await sanityClient.fetch(
+        `*[_type == "category"]{ slug, "productCount": count(*[_type == "product" && category._ref == ^._id]) }`
+      )
+    categoryPages = categoriesWithCount
+      .filter((c) => c.productCount > 0)
+      .map((category) => ({
+        url: `${baseUrl}/mini-shop/${category.slug.current}`,
+        lastModified: new Date(),
+        changeFrequency: 'daily' as const,
+        priority: 0.85,
+      }))
   } catch (error) {
     console.error('Sitemap: failed to fetch categories', error)
   }
