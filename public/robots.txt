@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /studio/
+Disallow: /_next/
+Disallow: /my-account
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /studio/
+Disallow: /_next/
+Disallow: /my-account
+Disallow: /checkout
+Disallow: /cart
+
+Sitemap: https://sharpspaceltd.com/sitemap.xml
