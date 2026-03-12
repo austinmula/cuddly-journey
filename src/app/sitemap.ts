@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
-import { getProducts, getCategories } from '@/lib/api'
+import { getCategories } from '@/lib/api'
+import sanityClient from '@/lib/sanity'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sharpspaceltd.com'
@@ -39,22 +40,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   // Dynamic category pages
-  const categories = await getCategories()
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/mini-shop/${category.slug.current}`,
-    lastModified: new Date(),
-    changeFrequency: 'daily' as const,
-    priority: 0.85,
-  }))
+  let categoryPages: MetadataRoute.Sitemap = []
+  try {
+    const categories = await getCategories()
+    categoryPages = categories.map((category) => ({
+      url: `${baseUrl}/mini-shop/${category.slug.current}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.85,
+    }))
+  } catch (error) {
+    console.error('Sitemap: failed to fetch categories', error)
+  }
 
-  // Dynamic product pages
-  const products = await getProducts()
-  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${baseUrl}/product-details/${product.slug.current}`,
-    lastModified: product.createdAt ? new Date(product.createdAt) : new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
+  // Dynamic product pages (minimal fields only)
+  let productPages: MetadataRoute.Sitemap = []
+  try {
+    const products: { slug: { current: string }; createdAt?: string }[] =
+      await sanityClient.fetch(`*[_type == "product"]{ slug, createdAt }`)
+    productPages = products.map((product) => ({
+      url: `${baseUrl}/product-details/${product.slug.current}`,
+      lastModified: product.createdAt ? new Date(product.createdAt) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }))
+  } catch (error) {
+    console.error('Sitemap: failed to fetch products', error)
+  }
 
   return [...staticPages, ...categoryPages, ...productPages]
 }

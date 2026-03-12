@@ -3,6 +3,7 @@ import { createClient } from "@sanity/client";
 const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID as string,
   dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET as string,
+  apiVersion: "2024-01-01",
   useCdn: process.env.NODE_ENV === "production",
 });
 
