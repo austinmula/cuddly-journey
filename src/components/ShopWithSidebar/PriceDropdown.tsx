@@ -62,7 +62,7 @@ const PriceDropdown = ({ setPriceRange, priceRange, updateFilters, selectedCateg
             />
 
             <div className="price-amount flex items-center justify-between pt-4">
-              <div className="text-custom-xs text-dark-4 flex rounded border border-gray-3/80">
+              <div className="text-custom-xs text-dark-4 flex rounded-sm border border-gray-3/80">
                 <span className="block border-r border-gray-3/80 px-2.5 py-1.5">
                   Kshs.
                 </span>
@@ -71,7 +71,7 @@ const PriceDropdown = ({ setPriceRange, priceRange, updateFilters, selectedCateg
                 </span>
               </div>
 
-              <div className="text-custom-xs text-dark-4 flex rounded border border-gray-3/80">
+              <div className="text-custom-xs text-dark-4 flex rounded-sm border border-gray-3/80">
                 <span className="block border-r border-gray-3/80 px-2.5 py-1.5">
                   Kshs.
                 </span>

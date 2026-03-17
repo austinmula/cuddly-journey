@@ -48,7 +48,7 @@ const SearchResults = () => {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Search products, brands, categories..."
               autoComplete="off"
-              className="flex-1 px-5 py-3.5 text-dark outline-none bg-transparent text-sm"
+              className="flex-1 px-5 py-3.5 text-dark outline-hidden bg-transparent text-sm"
             />
             <button
               type="submit"

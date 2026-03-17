@@ -34,7 +34,7 @@ const Countdown = () => {
             <span className="text-amber-400/60 font-bold text-lg sm:text-xl mb-4">:</span>
           )}
           <div className="flex flex-col items-center">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-white/5 border border-amber-400/20 backdrop-blur-sm">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-white/5 border border-amber-400/20 backdrop-blur-xs">
               <span className="text-white font-bold text-lg sm:text-xl tabular-nums">
                 {String(value).padStart(2, "0")}
               </span>

@@ -34,7 +34,7 @@ export default function ScrollToTop() {
         href="https://wa.me/254732652000"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 p-3 bg-[#2cd673] right-6 z-999 flex items-center justify-center w-14 h-14 text-white rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110"
+        className="fixed bottom-24 p-3 bg-green-light right-6 z-999 flex items-center justify-center w-14 h-14 text-white rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110"
       >
         {/* < size={28} /> */}
         <svg

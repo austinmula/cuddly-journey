@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="overflow-hidden pb-10 lg:pb-12.5 pt-12.5 bg-gradient-to-br from-[#E5EAF4] via-[#DDE4F2] to-[#D4DCEE]">
+    <section className="overflow-hidden pb-10 lg:pb-12.5 pt-12.5 bg-linear-to-br from-[#E5EAF4] via-[#DDE4F2] to-[#D4DCEE]">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 xl:px-0">
         <div className="grid grid-cols-2 md:grid-cols-7 md:grid-rows-2 gap-2 md:gap-4 max-md:p-4">
           {/* Laptops Hero Section (Spans 3 columns, full height) */}
@@ -18,7 +18,7 @@ const Hero = () => {
                 width={934}
                 height={720}
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,0,0,0.7)] via-[rgba(10,22,40,0.55)] to-[rgba(26,39,68,0.45)]" />
+              <div className="absolute inset-0 bg-linear-to-br from-[rgba(0,0,0,0.7)] via-[rgba(10,22,40,0.55)] to-[rgba(26,39,68,0.45)]" />
               <HeroCarousel />
             </div>
           </div>
@@ -34,7 +34,7 @@ const Hero = () => {
               fill
               className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
+            <div className="absolute inset-0 bg-linear-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
               <span className="text-white text-sm sm:text-xl font-bold drop-shadow-lg text-center px-2">
                 Quality Laptops
               </span>
@@ -52,7 +52,7 @@ const Hero = () => {
               fill
               className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
+            <div className="absolute inset-0 bg-linear-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
               <span className="text-white text-sm sm:text-xl font-bold drop-shadow-lg text-center px-2">
                 Printers & Scanners
               </span>
@@ -70,7 +70,7 @@ const Hero = () => {
               fill
               className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
+            <div className="absolute inset-0 bg-linear-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
               <span className="text-white text-sm sm:text-xl font-bold drop-shadow-lg text-center px-2">
                 Desktops & Monitors
               </span>
@@ -88,7 +88,7 @@ const Hero = () => {
               fill
               className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
+            <div className="absolute inset-0 bg-linear-to-t from-[#000]/70 via-[#000]/30 to-transparent flex items-end justify-center pb-4 pointer-events-none">
               <span className="text-white text-sm sm:text-xl font-bold drop-shadow-lg text-center px-2">
                 UPS & PowerBackups
               </span>
