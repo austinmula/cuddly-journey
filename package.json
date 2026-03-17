@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@portabletext/react": "^3.2.1",
+    "@portabletext/react": "^6.0.3",
     "@reduxjs/toolkit": "^2.11.2",
-    "@sanity/client": "^6.28.0",
-    "@sanity/image-url": "^1.1.0",
+    "@sanity/client": "^7.17.0",
+    "@sanity/image-url": "^2.0.3",
     "@tailwindcss/postcss": "^4.2.1",
     "@types/node": "20.6.2",
     "@types/react": "^19.2.14",
@@ -20,7 +20,7 @@
     "eslint": "8.49.0",
     "eslint-config-next": "^16.1.7",
     "next": "^16.1.7",
-    "next-sanity": "^9.8.56",
+    "next-sanity": "^12.1.2",
     "postcss": "^8.5.8",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -28,7 +28,8 @@
     "react-range-slider-input": "^3.3.2",
     "react-redux": "^9.2.0",
     "react-slider": "^2.0.6",
-    "sanity": "^3.75.0",
+    "sanity": "^5.17.1",
+    "styled-components": "^6.3.11",
     "swiper": "^10.2.0",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
