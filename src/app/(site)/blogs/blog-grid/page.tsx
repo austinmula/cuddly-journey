@@ -22,6 +22,13 @@ export const metadata: Metadata = {
     siteName: "SharpSpaceLtd",
     type: "website",
     locale: "en_KE",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "SharpSpaceLtd Tech Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tech Blog | SharpSpaceLtd - Tips, Reviews & News",
+    description: "Read the latest tech tips, product reviews, and news from SharpSpaceLtd.",
+    images: ["/images/og-image.jpg"],
   },
 };
 

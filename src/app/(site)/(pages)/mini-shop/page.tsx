@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     siteName: "SharpSpaceLtd",
     type: "website",
     locale: "en_KE",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "SharpSpaceLtd - Power Up Your Tech" }],
   },
   twitter: {
     card: "summary_large_image",

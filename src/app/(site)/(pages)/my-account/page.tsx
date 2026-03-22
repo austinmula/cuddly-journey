@@ -3,9 +3,9 @@ import React from "react";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "My Account | SharpSpaceLtd Power Up Your Tech",
-  description: "This is My Account page for SharpSpaceLtd",
-  // other metadata
+  title: "My Account | SharpSpaceLtd",
+  description: "Manage your SharpSpaceLtd account, orders, and preferences.",
+  robots: { index: false, follow: false },
 };
 
 const MyAccountPage = () => {
