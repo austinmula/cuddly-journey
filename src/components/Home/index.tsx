@@ -7,15 +7,12 @@ import BestSeller from "./BestSeller";
 import CounDown from "./Countdown";
 import Testimonials from "./Testimonials";
 import Newsletter from "../Common/Newsletter";
-import RamadanSale from "./RamadanSale";
-
 const Home = () => {
   return (
     <main>
       <Categories />
       <Hero />
       <NewArrival />
-      <RamadanSale />
       <PromoBanner />
       <BestSeller />
       {/* 
