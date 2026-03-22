@@ -280,9 +280,9 @@ export const getRandomProducts = async (): Promise<Product[]> => {
 
 export const searchProducts = async (query: string): Promise<Product[]> => {
   const groqQuery = `*[_type == "product" && (
-    title match $q + "*" ||
-    category->title match $q + "*" ||
-    brand match $q + "*"
+    title match $q ||
+    category->title match $q ||
+    brand match $q
   )] | order(_createdAt desc) {
     _id,
     title,
@@ -301,7 +301,7 @@ export const searchProducts = async (query: string): Promise<Product[]> => {
     createdAt
   }`;
 
-  const products: Product[] = await sanityClient.fetch(groqQuery, { q: query }, { cache: "no-cache" });
+  const products: Product[] = await sanityClient.fetch(groqQuery, { q: `${query}*` }, { cache: "no-cache" });
   return products;
 };
 

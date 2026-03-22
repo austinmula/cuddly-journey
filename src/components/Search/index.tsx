@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductItem from "@/components/Common/ProductItem";
-import { searchProducts } from "@/lib/api";
 import { Product } from "@/models/product";
 
 const SearchResults = () => {
@@ -22,7 +21,8 @@ const SearchResults = () => {
       return;
     }
     setLoading(true);
-    searchProducts(query)
+    fetch(`/api/search?q=${encodeURIComponent(query)}`)
+      .then((res) => res.json())
       .then(setResults)
       .catch(console.error)
       .finally(() => setLoading(false));
