@@ -49,11 +49,12 @@ export default function ScrollToTop() {
           // xml:space="preserve"
           stroke="#ffffff"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="0.666667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
