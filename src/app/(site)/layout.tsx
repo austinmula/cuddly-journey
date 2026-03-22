@@ -20,7 +20,6 @@ import PreLoader from "@/components/Common/PreLoader";
 import CategoriesSidebar from "@/components/Common/CategoriesSidebar";
 import { Category } from "@/models/category";
 import { getCategories } from "@/lib/api";
-import OrganizationSchema from "@/components/StructuredData/OrganizationSchema";
 import PageViewTracker from "@/components/Analytics/PageViewTracker";
 
 export default function RootLayout({
@@ -52,9 +51,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <head>
-        <OrganizationSchema />
-      </head>
       <body>
         {loading ? (
           <PreLoader />

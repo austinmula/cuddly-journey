@@ -6,12 +6,6 @@ import CategoryShop from "@/components/CategoryShop";
 import { urlFor } from "@/lib/urlFor";
 import CategorySchema from "@/components/StructuredData/CategorySchema";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
 export async function generateStaticParams() {
   const categories = await getCategories();
   return categories.map((category) => ({
@@ -19,8 +13,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = await getCategoryBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     return {
@@ -34,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? urlFor(category.image).width(1200).height(630).url()
     : '/images/og-image.jpg';
 
-  const categoryUrl = `https://sharpspaceltd.com/mini-shop/${params.slug}`;
+  const categoryUrl = `https://sharpspaceltd.com/mini-shop/${slug}`;
   const productCount = products.length;
 
   const description = `Shop ${category.title} at SharpSpaceLtd. Browse ${productCount} high-quality ${category.title.toLowerCase()} products including computers, accessories, and more. Fast delivery in Kenya.`;
@@ -99,8 +94,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const CategoryPage = async ({ params }: Props) => {
-  const category = await getCategoryBySlug(params.slug);
+const CategoryPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     notFound();

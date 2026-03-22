@@ -30,10 +30,10 @@ const HeroFeature = () => {
       <div className="flex flex-wrap items-center justify-center gap-5 xl:gap-8 mt-10">
         {featureData.map((item, key) => (
           <div
-            className="flex items-center gap-4 bg-white rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-200"
+            className="flex items-center gap-4 bg-white rounded-xl px-6 py-4 shadow-xs hover:shadow-md transition-shadow duration-200"
             key={key}
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 shrink-0">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-linear-to-br from-blue-50 to-indigo-100 shrink-0">
               <Image src={item.img} alt="icons" width={28} height={28} />
             </div>
 

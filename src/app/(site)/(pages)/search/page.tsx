@@ -3,8 +3,9 @@ import { Metadata } from "next";
 import SearchResults from "@/components/Search";
 
 export const metadata: Metadata = {
-  title: "Search | SharpSpace LTD",
-  description: "Search across all products at SharpSpace LTD",
+  title: "Search | SharpSpaceLtd",
+  description: "Search across all products at SharpSpaceLtd — computers, laptops, accessories, and more in Kenya.",
+  robots: { index: false, follow: false },
 };
 
 const SearchPage = () => {

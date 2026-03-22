@@ -63,7 +63,7 @@ const RamadanSale = async () => {
 
         {/* Small crescent — bottom left */}
         <svg
-          className="absolute bottom-8 left-8 opacity-10 rotate-[200deg]"
+          className="absolute bottom-8 left-8 opacity-10 rotate-200"
           width="48"
           height="48"
           viewBox="0 0 80 80"
@@ -118,9 +118,9 @@ const RamadanSale = async () => {
 
           {/* Gold divider */}
           <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-400/60" />
+            <div className="h-px w-16 bg-linear-to-r from-transparent to-amber-400/60" />
             <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-amber-400/60" />
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-amber-400/60" />
           </div>
         </div>
 

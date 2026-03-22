@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import GoogleAnalytics from '@/components/Analytics/GoogleAnalytics'
+import OrganizationSchema from '@/components/StructuredData/OrganizationSchema'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sharpspaceltd.com'),
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_KE',
     url: 'https://sharpspaceltd.com',
     siteName: 'SharpSpaceLtd',
     title: 'SharpSpaceLtd | Power Up Your Tech',
@@ -63,8 +65,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <OrganizationSchema />
+      </head>
       <body>
         <GoogleAnalytics />
+        <Script
+          id="clarity-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","vzsqp8x615");`,
+          }}
+        />
         {children}
       </body>
     </html>

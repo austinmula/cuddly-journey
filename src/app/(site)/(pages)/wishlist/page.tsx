@@ -3,9 +3,9 @@ import { Wishlist } from "@/components/Wishlist";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Wishlist Page | SharpSpaceLtd Power Up Your Tech",
-  description: "This is Wishlist Page for SharpSpaceLtd Template",
-  // other metadata
+  title: "Wishlist | SharpSpaceLtd",
+  description: "View and manage your saved products on SharpSpaceLtd.",
+  robots: { index: false, follow: false },
 };
 
 const WishlistPage = () => {

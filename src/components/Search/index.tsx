@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductItem from "@/components/Common/ProductItem";
-import { searchProducts } from "@/lib/api";
 import { Product } from "@/models/product";
 
 const SearchResults = () => {
@@ -22,7 +21,8 @@ const SearchResults = () => {
       return;
     }
     setLoading(true);
-    searchProducts(query)
+    fetch(`/api/search?q=${encodeURIComponent(query)}`)
+      .then((res) => res.json())
       .then(setResults)
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -48,7 +48,7 @@ const SearchResults = () => {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Search products, brands, categories..."
               autoComplete="off"
-              className="flex-1 px-5 py-3.5 text-dark outline-none bg-transparent text-sm"
+              className="flex-1 px-5 py-3.5 text-dark outline-hidden bg-transparent text-sm"
             />
             <button
               type="submit"

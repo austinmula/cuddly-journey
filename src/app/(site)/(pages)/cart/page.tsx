@@ -3,9 +3,9 @@ import Cart from "@/components/Cart";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Cart Page | SharpSpaceLtd Power Up Your Tech",
-  description: "This is Cart Page for SharpSpaceLtd",
-  // other metadata
+  title: "Your Cart | SharpSpaceLtd",
+  description: "Review your selected items and proceed to checkout.",
+  robots: { index: false, follow: false },
 };
 
 const CartPage = () => {

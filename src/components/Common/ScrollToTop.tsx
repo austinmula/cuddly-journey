@@ -34,7 +34,7 @@ export default function ScrollToTop() {
         href="https://wa.me/254732652000"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 p-3 bg-[#2cd673] right-6 z-999 flex items-center justify-center w-14 h-14 text-white rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110"
+        className="fixed bottom-24 p-3 bg-green-light right-6 z-999 flex items-center justify-center w-14 h-14 text-white rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110"
       >
         {/* < size={28} /> */}
         <svg
@@ -49,11 +49,12 @@ export default function ScrollToTop() {
           // xml:space="preserve"
           stroke="#ffffff"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="0.666667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
