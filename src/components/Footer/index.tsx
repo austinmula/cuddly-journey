@@ -234,7 +234,7 @@ const Footer = () => {
                   Login / Register
                 </a>
               </li> */}
-              {categories.length &&
+              {categories.length > 0 &&
                 categories.slice(0, 4).map((category) => (
                   <li key={category._id}>
                     <a
